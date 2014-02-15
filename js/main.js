@@ -27,17 +27,25 @@ var Anime = {
     return this.url;
   },
   getThumbnailURL: function() {
-    return "http://capture.heartrails.com/200x300/delay=" + this.thumbnailDelay + "?" + this.url;
+    return "http://capture.heartrails.com/200x200/delay=" + this.thumbnailDelay + "?" + this.url;
   },
   getEncodedURL: function() {
     return encodeURIComponent(this.url);
   },
   getHatebuURL: function() {
     return "http://b.hatena.ne.jp/entry/" + this.url;
+  },
+  getFacebookButtonURL: function() {
+    return "http://www.facebook.com/plugins/like.php?href=" + this.getEncodedURL() + "&amp;width&amp;layout=box_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=65";
   }
 }
 
-angular.module("mainModule", []).controller("simpleController", function($scope, $sce) {
+var app = angular.module("mainModule", []);
+app.config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist([
+    'http://www.facebook.com/**'
+  ])
+}).controller("simpleController", function($scope) {
   //オブジェクト作成
   var arr = [];
   arr.push(object(Anime, {
@@ -167,4 +175,36 @@ angular.module("mainModule", []).controller("simpleController", function($scope,
   }));
 
   $scope.animes = arr;
+});
+
+//Seasonクラス
+var Season = {
+  name: "冬",
+  year: 2000,
+  getFullName: function(){
+    return this.year + "年 " + this.name;
+  }
+};
+
+app.controller("seasonsController", function($scope) {
+  var arr = [];
+  
+  arr.push(object(Season, {
+    name: "冬",
+    year: 2014
+  }));
+  arr.push(object(Season, {
+    name: "春",
+    year: 2014
+  }));
+  arr.push(object(Season, {
+    name: "夏",
+    year: 2014
+  }));
+  arr.push(object(Season, {
+    name: "秋",
+    year: 2014
+  }));
+  
+  $scope.seasons = arr;
 });
