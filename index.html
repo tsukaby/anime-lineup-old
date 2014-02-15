@@ -39,6 +39,7 @@
 <article class="container-fluid">
   <ul class="row" ng-controller="simpleController">
     <li class="col-xs-4 col-md-4 thumbnail" ng-repeat="anime in animes">
+      <p>{{anime.getTitle()}}</p>
       <a href="{{anime.getURL()}}" target="_blank"><img title="{{anime.getTitle()}}" src="{{anime.getThumbnailURL()}}" width="200" height="300"/></a>
       <ul id="introduce">
         <!-- Google -->

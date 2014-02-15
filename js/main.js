@@ -60,6 +60,111 @@ angular.module("mainModule", []).controller("simpleController", function($scope,
     url: "http://inarikonkon.jp/",
     thumbnailDelay: 0
   }));
+  arr.push(object(Anime, {
+    title: "そにアニ",
+    url: "http://soniani.jp/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "とある飛空士への恋歌",
+    url: "http://koiuta.tv/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "ディーふらぐ！",
+    url: "http://www.d-fragments.net/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "ハマトラ",
+    url: "http://hamatorapj.com/animation.html",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "マケン姫っ！通",
+    url: "http://maken-ki-two.com/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "未確認で進行形",
+    url: "http://mikakunin.jp/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "お姉ちゃんが来た",
+    url: "http://www.takeshobo.co.jp/sp/tv_oneechan/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "銀の匙 Silver Spoon",
+    url: "http://www.ginsaji-anime.com/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "桜Trick",
+    url: "http://www.tbs.co.jp/anime/sakura/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "Wake Up Girls!",
+    url: "http://wakeupgirls.jp/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "生徒会役員共＊",
+    url: "http://www.starchild.co.jp/special/seitokai2/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "最近、妹のようすがちょっとおかしいんだが。",
+    url: "http://imocyo-anime.com/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "ニセコイ",
+    url: "http://www.nisekoi.jp/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "世界征服～謀略のズヴィズダー～",
+    url: "http://www.sekaiseifuku-zzz.com/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "ウィッチクラフトワークス",
+    url: "http://www.witch-cw-anime.jp/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "スペースダンディ",
+    url: "http://space-dandy.com/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "ノブナガン",
+    url: "http://www.vap.co.jp/nobunagun/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "ノラガミ",
+    url: "http://noragami-anime.net/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "バディ・コンプレックス",
+    url: "http://buddy-complex.jp/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "ウィザード・バリスターズ～弁魔士セシル",
+    url: "http://wizardbarristers.com/",
+    thumbnailDelay: 0
+  }));
+  arr.push(object(Anime, {
+    title: "ノブナガ・ザ・フール",
+    url: "http://www.nobunaga.tv/",
+    thumbnailDelay: 0
+  }));
 
   $scope.animes = arr;
 });
