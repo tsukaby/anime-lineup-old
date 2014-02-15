@@ -55,12 +55,12 @@
             </ul>
           </div>
           <div class="col-xs-6 col-md-6 input-group">
-            <input type="text" class="form-control" placeholder="タイトルを入力して絞り込めます">
+            <input type="text" class="form-control" placeholder="タイトルを入力して絞り込めます" ng-model="filter.title">
           </div>
         </div>
       </div>
       <ul id="anime_list" class="row" ng-controller="simpleController">
-        <li class="col-xs-4 col-md-4" ng-repeat="anime in animes | filter:anime - title">
+        <li class="col-xs-4 col-md-4" ng-repeat="anime in animes | filter:filter">
           <div class="panel panel-default">
             <div class="panel-body">
               <div class="panel-title">
