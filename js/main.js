@@ -40,12 +40,26 @@ var Anime = {
   }
 };
 
-var app = angular.module("mainModule", []);
-app.config(function($sceDelegateProvider) {
-  $sceDelegateProvider.resourceUrlWhitelist([
-    'http://www.facebook.com/**'
-  ]);
-}).controller("simpleController", function($scope, $http) {
+//Seasonクラス
+var Season = {
+  name: "冬",
+  year: 2000,
+  getFullName: function() {
+    return this.year + "年 " + this.name;
+  }
+};
+
+
+angular.module("myApp", ['myApp.controllers', 'ngRoute']).config(function($routeProvider) {
+  return $routeProvider.when("/", {
+    controller: 'simpleController'
+  }).when("/:year/:season", {
+    controller: 'simpleController'
+  });
+}).run(function($route) {
+});
+
+angular.module("myApp.controllers", []).controller("simpleController", function($scope, $http, $routeParams, $rootScope, $location) {
 
   $scope.changeSeason = function(year, season) {
     //オブジェクト作成
@@ -59,19 +73,12 @@ app.config(function($sceDelegateProvider) {
     });
 
   };
-  $scope.changeSeason(2014, 'winter');
-});
 
-//Seasonクラス
-var Season = {
-  name: "冬",
-  year: 2000,
-  getFullName: function(){
-    return this.year + "年 " + this.name;
-  }
-};
-
-app.controller("seasonsController", function($scope) {
+  // パラメタに対するシーズンの一覧を表示
+  return $rootScope.$on("$routeChangeSuccess", function(event, current) {
+    $scope.changeSeason($routeParams['year'], $routeParams['season']);
+  });
+}).controller("seasonsController", function($scope) {
   var arr = [];
   
   arr.push(object(Season, {
