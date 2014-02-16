@@ -38,26 +38,28 @@ var Anime = {
   getFacebookButtonURL: function() {
     return "http://www.facebook.com/plugins/like.php?href=" + this.getEncodedURL() + "&amp;width&amp;layout=box_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=65";
   }
-}
+};
 
 var app = angular.module("mainModule", []);
 app.config(function($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist([
     'http://www.facebook.com/**'
-  ])
+  ]);
 }).controller("simpleController", function($scope, $http) {
-  //オブジェクト作成
-  $http.get("data/animes.json").success(function(data) {
-    var arr = [];
-    for (var i = 0; i < data.length; i++) {
-      arr.push(object(Anime, data[i]));
-    }
 
-    $scope.animes = arr;
-  });
+  $scope.changeSeason = function(year, season) {
+    //オブジェクト作成
+    $http.get("data/" + year + "_" + season + ".json").success(function(data) {
+      var arr = [];
+      for (var i = 0; i < data.length; i++) {
+        arr.push(object(Anime, data[i]));
+      }
 
-  
+      $scope.animes = arr;
+    });
 
+  };
+  $scope.changeSeason(2014, 'winter');
 });
 
 //Seasonクラス
