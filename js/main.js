@@ -49,6 +49,81 @@ var Season = {
   }
 };
 
+//Season enum
+var SeasonEnum = {
+  spring: "spring",
+  summer: "summer",
+  autumn: "autumn",
+  winter: "winter"
+};
+
+//引数から次のシーズンを求める関数
+var nextSeason = function(year, season) {
+  switch (season) {
+    case "winter":
+      return {
+        year: year,
+        season: "spring"
+      };
+      break;
+    case "spring":
+      return {
+        year: year,
+        season: "summer"
+      };
+      break;
+    case "summer":
+      return {
+        year: year,
+        season: "autumn"
+      };
+      break;
+    case "autumn":
+      // アニメは冬シーズンから始まるため、秋の次は年度が増える
+      return {
+        year: Number(year) + 1,
+        season: "winter"
+      };
+      break;
+  }
+};
+
+//引数から前のシーズンを求める関数
+var previousSeason = function(year, season) {
+  switch (season) {
+    case "winter":
+      // アニメは冬シーズンから始まるため、冬の前は年度が減る
+      return {
+        year: Number(year) - 1,
+        season: "autumn"
+      };
+      break;
+    case "spring":
+      return {
+        year: year,
+        season: "winter"
+      };
+      break;
+    case "summer":
+      return {
+        year: year,
+        season: "spring"
+      };
+      break;
+    case "autumn":
+      return {
+        year: year,
+        season: "summer"
+      };
+      break;
+  }
+};
+
+var toJapaneseForSeason = function(season) {
+  var seasons = {"spring": "春", "summer": "夏", "autumn": "秋", "winter": "冬"};
+  return seasons[season];
+};
+
 
 angular.module("myApp", ['myApp.controllers', 'ngRoute']).config(function($routeProvider) {
   return $routeProvider.when("/", {
@@ -74,9 +149,21 @@ angular.module("myApp.controllers", []).controller("simpleController", function(
 
   };
 
+
   // パラメタに対するシーズンの一覧を表示
   return $rootScope.$on("$routeChangeSuccess", function(event, current) {
-    $scope.changeSeason($routeParams['year'], $routeParams['season']);
+
+    //現在のシーズンを設定
+    $scope.currentSeason = $routeParams.year + "年 " + toJapaneseForSeason($routeParams.season);
+
+    var previous = previousSeason($routeParams.year, $routeParams.season);
+    var next = nextSeason($routeParams.year, $routeParams.season);
+
+    //前と次のシーズンのリンクを設定
+    $scope.previousSeason = "#/" + previous.year + "/" + previous.season;
+    $scope.nextSeason = "#/" + next.year + "/" + next.season;
+
+    $scope.changeSeason($routeParams.year, $routeParams.season);
   });
 }).controller("seasonsController", function($scope) {
   var arr = [];

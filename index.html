@@ -37,12 +37,12 @@
         </div>
       </div>
     </nav>
-    <article class="container-fluid">
+    <article class="container-fluid"  ng-controller="simpleController">
       <div class="row">
         <ul class="pager">
-          <li class="previous"><a href="#">&larr; Previous Season</a></li>
-          <li><a href="#">シーズン：2014年冬</a></li>
-          <li class="next"><a href="#">Next Season &rarr;</a></li>
+          <li class="previous"><a href="{{previousSeason}}">&larr; Previous Season</a></li>
+          <li><a href="#">シーズン：{{currentSeason}}</a></li>
+          <li class="next"><a href="{{nextSeason}}">Next Season &rarr;</a></li>
         </ul>
         <div class="input-group">
           <div class="col-xs-6 col-md-6 btn-group">
@@ -60,7 +60,7 @@
           </div>
         </div>
       </div>
-      <ul id="anime_list" class="row" ng-controller="simpleController">
+      <ul id="anime_list" class="row">
         <li class="col-xs-4 col-md-4" ng-repeat="anime in animes | filter:filter">
           <div class="panel panel-default">
             <div class="panel-body">
