@@ -1,3 +1,5 @@
+'use strict';
+
 /*
  * object - オブジェクトを作る
  * Object object(BaseObj [, mixinObj1 [, mixinObj2...]])
@@ -124,16 +126,7 @@ var toJapaneseForSeason = function(season) {
   return seasons[season];
 };
 
-
-angular.module("myApp", ['myApp.controllers', 'ngRoute']).config(function($routeProvider) {
-  return $routeProvider.when("/", {
-    controller: 'simpleController'
-  }).when("/:year/:season", {
-    controller: 'simpleController'
-  });
-}).run(function($route) {
-});
-
+/* Controllers */
 angular.module("myApp.controllers", []).controller("simpleController", function($scope, $http, $routeParams, $rootScope, $location) {
 
   $scope.changeSeason = function(year, season) {
@@ -148,8 +141,6 @@ angular.module("myApp.controllers", []).controller("simpleController", function(
     });
 
   };
-
-
   // パラメタに対するシーズンの一覧を表示
   return $rootScope.$on("$routeChangeSuccess", function(event, current) {
 
@@ -167,7 +158,7 @@ angular.module("myApp.controllers", []).controller("simpleController", function(
   });
 }).controller("seasonsController", function($scope) {
   var arr = [];
-  
+
   arr.push(object(Season, {
     name: "冬",
     year: 2014
@@ -184,6 +175,6 @@ angular.module("myApp.controllers", []).controller("simpleController", function(
     name: "秋",
     year: 2014
   }));
-  
+
   $scope.seasons = arr;
 });
