@@ -33,7 +33,7 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">About</a></li>
-            <li><a href="#" ng-click="targetOfPartial = 'season_list'">Seasons</a></li>
+            <li><a href="#/season_calendar">Seasons</a></li>
           </ul>
         </div>
       </div>
@@ -42,14 +42,13 @@
     <div class="row" ng-controller="seasonNavigationController">
       <ul class="pager">
         <li class="previous"><a href="{{previousSeason}}">&larr; Previous Season</a></li>
-        <li><a href="#">シーズン：{{currentSeason}}</a></li>
+        <li><a href="#/season_calendar">シーズン：{{currentSeason}}</a></li>
         <li class="next"><a href="{{nextSeason}}">Next Season &rarr;</a></li>
       </ul>
     </div>
     <hr>
-    <article ng-if="targetOfPartial === 'anime_list'" ng-include="'partials/anime_list.html'" ng-controller="simpleController"></article>
-    <article ng-if="targetOfPartial === 'season_list'" ng-include="'partials/season_list.html'"></article>
-    <footer>
+  <ng-view></ng-view>
+  <footer>
       <hr>
       <div class="container">
         <div>

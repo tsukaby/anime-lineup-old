@@ -149,21 +149,56 @@ angular.module("myApp.controllers", []).controller("seasonNavigationController",
 
       $scope.animes = arr;
     });
-
   };
-  // パラメタに対するシーズンの一覧を表示
-  return $rootScope.$on("$routeChangeSuccess", function(event, current) {
 
-    //現在のシーズンを設定
-    $scope.currentSeason = $routeParams.year + "年 " + toJapaneseForSeason($routeParams.season);
+  //現在のシーズンを設定
+  $scope.currentSeason = $routeParams.year + "年 " + toJapaneseForSeason($routeParams.season);
 
-    var previous = previousSeason($routeParams.year, $routeParams.season);
-    var next = nextSeason($routeParams.year, $routeParams.season);
+  var previous = previousSeason($routeParams.year, $routeParams.season);
+  var next = nextSeason($routeParams.year, $routeParams.season);
 
-    //前と次のシーズンのリンクを設定
-    $scope.previousSeason = "#/" + previous.year + "/" + previous.season;
-    $scope.nextSeason = "#/" + next.year + "/" + next.season;
+  //前と次のシーズンのリンクを設定
+  $scope.previousSeason = "#/" + previous.year + "/" + previous.season;
+  $scope.nextSeason = "#/" + next.year + "/" + next.season;
 
-    $scope.changeSeason($routeParams.year, $routeParams.season);
-  });
+  $scope.changeSeason($routeParams.year, $routeParams.season);
+
+}).controller("seasonController", function($scope) {
+
+  var arr = [
+    {
+      name: "2014年 冬",
+      link: "#/2014/winter/"
+    },
+    {
+      name: "2014年 春",
+      link: "#/2014/spring/"
+    },
+    {
+      name: "2014年 夏",
+      link: "#/2014/summer/"
+    },
+    {
+      name: "2014年 秋",
+      link: "#/2014/autumn/"
+    },
+    {
+      name: "2013年 冬",
+      link: "#/2013/winter/"
+    },
+    {
+      name: "2013年 春",
+      link: "#/2013/spring/"
+    },
+    {
+      name: "2013年 夏",
+      link: "#/2013/summer/"
+    },
+    {
+      name: "2013年 秋",
+      link: "#/2013/autumn/"
+    }
+  ];
+
+  $scope.seasons = arr;
 });
