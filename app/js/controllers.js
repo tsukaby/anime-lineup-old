@@ -126,6 +126,27 @@ var toJapaneseForSeason = function(season) {
   return seasons[season];
 };
 
+// 現在日時から現在のシーズンを求める関数
+var currentSeason = function() {
+  var now = new Date();
+  var year = now.getFullYear();
+  var season;
+  if (1 <= now.getMonth() && now.getMonth() <= 3) {
+    season = SeasonEnum.winter;
+  } else if (4 <= now.getMonth() && now.getMonth() <= 6) {
+    season = SeasonEnum.spring;
+  } else if (7 <= now.getMonth() && now.getMonth() <= 9) {
+    season = SeasonEnum.summer;
+  } else if (10 <= now.getMonth() && now.getMonth() <= 12) {
+    season = SeasonEnum.autumn;
+  }
+
+  return {
+    year: year,
+    season: season
+  };
+};
+
 /* Controllers */
 angular.module("myApp.controllers", []).controller("simpleController", function($scope, $http, $routeParams, $rootScope, $location) {
 
@@ -144,17 +165,29 @@ angular.module("myApp.controllers", []).controller("simpleController", function(
   // パラメタに対するシーズンの一覧を表示
   return $rootScope.$on("$routeChangeSuccess", function(event, current) {
 
-    //現在のシーズンを設定
-    $scope.currentSeason = $routeParams.year + "年 " + toJapaneseForSeason($routeParams.season);
+    var year;
+    var season;
+    // 現在のシーズンを設定
+    // TODO:不正なパラメータのエラー処理
+    if ($routeParams.year === undefined || $routeParams.season === undefined) {
+      //パラメタなしアクセスの場合は現在日付から現在シーズンを求める
+      var current = currentSeason();
+      year = current.year;
+      season = current.season;
+    } else {
+      year = $routeParams.year;
+      season = $routeParams.season;
+      $scope.currentSeason = year + "年 " + toJapaneseForSeason(season);
+    }
 
-    var previous = previousSeason($routeParams.year, $routeParams.season);
-    var next = nextSeason($routeParams.year, $routeParams.season);
+    var previous = previousSeason(year, season);
+    var next = nextSeason(year, season);
 
     //前と次のシーズンのリンクを設定
     $scope.previousSeason = "#/" + previous.year + "/" + previous.season;
     $scope.nextSeason = "#/" + next.year + "/" + next.season;
 
-    $scope.changeSeason($routeParams.year, $routeParams.season);
+    $scope.changeSeason(year, season);
   });
 }).controller("seasonsController", function($scope) {
   var arr = [];
