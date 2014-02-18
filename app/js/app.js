@@ -6,9 +6,14 @@ angular.module('myApp', [
 ]).
 config(['$routeProvider', function($routeProvider) {
             return $routeProvider.when("/", {
-              controller: 'simpleController'
+              controller: 'simpleController',
+              templateUrl: 'partials/anime_list.html'
             }).when("/:year/:season", {
-              controller: 'simpleController'
+              controller: 'simpleController',
+              templateUrl: 'partials/anime_list.html'
+            }).when("/season_calendar", {
+              controller: 'seasonController',
+              templateUrl: 'partials/season_list.html'
             });
           }]).run(function($route) {
 });
