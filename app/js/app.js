@@ -17,4 +17,3 @@ config(['$routeProvider', function($routeProvider) {
             });
           }]).run(function($route) {
 });
-;

@@ -60,9 +60,9 @@ var SeasonEnum = {
 };
 
 /* Controllers */
-angular.module("myApp.controllers", []).controller("seasonNavigationController", function($scope, $http, $routeParams, $rootScope, $location, seasonService) {
+angular.module("myApp.controllers", []).controller("seasonNavigationController", function($scope, $routeParams, $rootScope, seasonService) {
   // パラメタに対するシーズンの一覧を表示
-  return $rootScope.$on("$routeChangeSuccess", function(event, current) {
+  return $rootScope.$on("$routeChangeSuccess", function() {
     //現在のシーズンを設定
     var year;
     var season;
@@ -88,7 +88,7 @@ angular.module("myApp.controllers", []).controller("seasonNavigationController",
     $scope.previousSeason = "#/" + previous.year + "/" + previous.season;
     $scope.nextSeason = "#/" + next.year + "/" + next.season;
   });
-}).controller("animeListController", function($scope, $http, $routeParams, $rootScope, $location, seasonService) {
+}).controller("animeListController", function($scope, $http, $routeParams, seasonService) {
   $scope.changeSeason = function(year, season) {
     //オブジェクト作成
     $http.get("data/" + year + "_" + season + ".json").success(function(data) {
