@@ -6,10 +6,10 @@ angular.module('myApp', [
 ]).
 config(['$routeProvider', function($routeProvider) {
             return $routeProvider.when("/", {
-              controller: 'simpleController',
+              controller: 'animeListController',
               templateUrl: 'partials/anime_list.html'
             }).when("/:year/:season", {
-              controller: 'simpleController',
+              controller: 'animeListController',
               templateUrl: 'partials/anime_list.html'
             }).when("/season_calendar", {
               controller: 'seasonController',

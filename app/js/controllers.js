@@ -176,7 +176,7 @@ angular.module("myApp.controllers", []).controller("seasonNavigationController",
     $scope.previousSeason = "#/" + previous.year + "/" + previous.season;
     $scope.nextSeason = "#/" + next.year + "/" + next.season;
   });
-}).controller("simpleController", function($scope, $http, $routeParams, $rootScope, $location) {
+}).controller("animeListController", function($scope, $http, $routeParams, $rootScope, $location) {
   $scope.changeSeason = function(year, season) {
     //オブジェクト作成
     $http.get("data/" + year + "_" + season + ".json").success(function(data) {
