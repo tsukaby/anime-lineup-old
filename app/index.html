@@ -40,13 +40,15 @@
       </div>
     </nav>
     <hr>
-    <div class="row" ng-controller="seasonNavigationController">
-      <ul class="pager">
-        <li class="previous"><a href="{{previousSeason}}">&larr; Previous Season</a></li>
-        <li><a href="#/season_calendar">シーズン：{{currentSeason}}</a></li>
-        <li class="next"><a href="{{nextSeason}}">Next Season &rarr;</a></li>
-      </ul>
-    </div>
+    <nav class="container-fluid">
+      <div class="row" ng-controller="seasonNavigationController">
+        <ul class="pager">
+          <li class="previous"><a href="{{previousSeason}}">&larr; Previous Season</a></li>
+          <li><a href="#/season_calendar">シーズン：{{currentSeason}}</a></li>
+          <li class="next"><a href="{{nextSeason}}">Next Season &rarr;</a></li>
+        </ul>
+      </div>
+    </nav>
     <hr>
     <div ng-view></div>
     <footer>
