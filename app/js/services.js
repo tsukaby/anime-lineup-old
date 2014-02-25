@@ -3,7 +3,7 @@
 // シーズンに関する機能を提供するユーティリティ
 angular.module('myApp').factory("seasonService", function($http) {
   var seasons;
-  $http.get("data/seasons.json").success(function(data) {
+  $http.get("data/seasons.json", {cache: true}).success(function(data) {
     seasons = data;
   });
   return {
