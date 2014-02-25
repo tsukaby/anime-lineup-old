@@ -2,21 +2,25 @@
   {
     "title": "俺の彼女と幼なじみが修羅場すぎる",
     "url": "http://www.oreshura.net/",
-    "thumbnailDelay": 0
+    "thumbnailDelay": 0,
+    "snsPoint": 0
   },
   {
     "title": "ラブライブ！",
     "url": "http://www.lovelive-anime.jp/",
-    "thumbnailDelay": 0
+    "thumbnailDelay": 0,
+    "snsPoint": 0
   },
   {
     "title": "GJ部",
     "url": "http://www.ntv.co.jp/gj/series/",
-    "thumbnailDelay": 0
+    "thumbnailDelay": 0,
+    "snsPoint": 0
   },
   {
     "title": "問題児たちが異世界から来るそうですよ？",
     "url": "http://mondaiji.tv/",
-    "thumbnailDelay": 0
+    "thumbnailDelay": 0,
+    "snsPoint": 0
   }
 ]

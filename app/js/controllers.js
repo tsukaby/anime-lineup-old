@@ -22,6 +22,7 @@ var Anime = {
   title: "title",
   url: "http://",
   thumbnailDelay: 0,
+  snsPoint: 0,
   getTitle: function() {
     return this.title;
   },
@@ -39,6 +40,9 @@ var Anime = {
   },
   getFacebookButtonURL: function() {
     return "http://www.facebook.com/plugins/like.php?href=" + this.getEncodedURL() + "&amp;width&amp;layout=box_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=65";
+  },
+  getSnsPoint: function() {
+    return this.snsPoint;
   }
 };
 
