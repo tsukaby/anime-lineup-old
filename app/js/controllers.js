@@ -61,7 +61,7 @@ var SeasonEnum = {
 
 /* Controllers */
 angular.module("myApp.controllers", []).controller("seasonNavigationController", function($scope, $routeParams, $rootScope, seasonService) {
-}).controller("animeListController", function($scope, $http, $routeParams, seasonService) {
+}).controller("animeListController", function($scope, $http, $routeParams, seasonService, $filter) {
   $scope.changeSeason = function(year, season) {
     //オブジェクト作成
     $http.get("data/" + year + "_" + season + ".json", {cache: true}).success(function(data) {
@@ -111,7 +111,11 @@ angular.module("myApp.controllers", []).controller("seasonNavigationController",
     $scope.nextSeason = "";
   }
 
-
+  $scope.sortTitle = function() {
+    var desc = !!$scope.desc;
+    $scope.animes = $filter('orderBy')($scope.animes, "title", desc);
+    $scope.desc = !desc;
+  };
 
 
 
