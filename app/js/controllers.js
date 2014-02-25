@@ -121,6 +121,12 @@ angular.module("myApp.controllers", []).controller("seasonNavigationController",
     $scope.desc = !desc;
   };
 
+  $scope.sortPoint = function() {
+    var desc = !!$scope.desc;
+    $scope.animes = $filter('orderBy')($scope.animes, "snsPoint", desc);
+    $scope.desc = !desc;
+  };
+
 
 
 }).controller("seasonController", function($scope, seasonService) {
