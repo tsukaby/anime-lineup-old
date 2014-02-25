@@ -64,7 +64,7 @@ angular.module("myApp.controllers", []).controller("seasonNavigationController",
 }).controller("animeListController", function($scope, $http, $routeParams, seasonService) {
   $scope.changeSeason = function(year, season) {
     //オブジェクト作成
-    $http.get("data/" + year + "_" + season + ".json").success(function(data) {
+    $http.get("data/" + year + "_" + season + ".json", {cache: true}).success(function(data) {
       var arr = [];
       for (var i = 0; i < data.length; i++) {
         arr.push(object(Anime, data[i]));
