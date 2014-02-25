@@ -14,5 +14,6 @@ angular.module('myApp', [
       controller: 'seasonController',
       templateUrl: 'partials/season_list.html'
     });
-  }]).run(function($route) {
+  }]).run(function($route, seasonService) {
+  // seasonServiceを始めに初期化するため、Inject
 });

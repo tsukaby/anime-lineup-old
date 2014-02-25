@@ -95,6 +95,17 @@ angular.module('myApp').factory("seasonService", function($http) {
     // 選択可能なシーズンの一覧
     getSeasons: function() {
       return seasons;
+    },
+    // 選択可能なシーズンの一覧に引数で指定したシーズンが含まれているかを調べる
+    // true: 含まれている
+    hasSeasons: function(season) {
+      for (var i = 0; i < seasons.length; i++) {
+        if ((seasons[i].year == season.year) && (seasons[i].season == season.season)) {
+          return true;
+        }
+      }
+
+      return false;
     }
   };
 });

@@ -1,33 +1,31 @@
 [
   {
+    "year": "2014",
+    "season": "winter",
     "name": "2014年 冬",
     "link": "#/2014/winter/"
   },
   {
-    "name": "2014年 春",
-    "link": "#/2014/spring/"
-  },
-  {
-    "name": "2014年 夏",
-    "link": "#/2014/summer/"
-  },
-  {
-    "name": "2014年 秋",
-    "link": "#/2014/autumn/"
-  },
-  {
+    "year": "2013",
+    "season": "winter",
     "name": "2013年 冬",
     "link": "#/2013/winter/"
   },
   {
+    "year": "2013",
+    "season": "spring",
     "name": "2013年 春",
     "link": "#/2013/spring/"
   },
   {
+    "year": "2013",
+    "season": "summer",
     "name": "2013年 夏",
     "link": "#/2013/summer/"
   },
   {
+    "year": "2013",
+    "season": "autumn",
     "name": "2013年 秋",
     "link": "#/2013/autumn/"
   }

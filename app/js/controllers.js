@@ -100,6 +100,20 @@ angular.module("myApp.controllers", []).controller("seasonNavigationController",
   $scope.previousSeason = "#/" + previous.year + "/" + previous.season;
   $scope.nextSeason = "#/" + next.year + "/" + next.season;
 
+  //disabledクラス追加、リンクは空
+  if (!seasonService.hasSeasons(previous)) {
+    //
+    $scope.previousSeason = "";
+  }
+
+  if (!seasonService.hasSeasons(next)) {
+    //
+    $scope.nextSeason = "";
+  }
+
+
+
+
 
 }).controller("seasonController", function($scope, seasonService) {
   $scope.seasons = seasonService.getSeasons();
