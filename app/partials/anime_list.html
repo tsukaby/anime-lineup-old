@@ -17,7 +17,7 @@
         </button>
         <ul class="dropdown-menu">
           <li><a href="" ng-click="sortTitle()">Title</a></li>
-          <li><a href="" ng-click="">ポイント</a></li>
+          <li><a href="" ng-click="sortPoint()">SNS Point</a></li>
         </ul>
       </div>
       <div class="col-xs-6 col-md-6 input-group">
@@ -27,11 +27,11 @@
   </div>
   <ul id="anime_list" class="row">
     <li class="col-xs-4 col-md-4" ng-repeat="anime in animes | filter:filter">
-      <div class="panel panel-default">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center">{{anime.getTitle()}}</h3>
+        </div>
         <div class="panel-body">
-          <div class="panel-title">
-            <p>{{anime.getTitle()}}</p>
-          </div>
           <a href="{{anime.getURL()}}" target="_blank"><img title="{{anime.getTitle()}}" src="{{anime.getThumbnailURL()}}" width="200" height="200"/></a>
           <ul id="introduce">
             <!-- Google -->
@@ -67,6 +67,9 @@
             <!-- Facebook -->
             <li><div class="fb-like" data-href="{{anime.getURL()}}" data-layout="box_count" data-action="like" data-show-faces="false" data-share="false"></div></li>
           </ul>
+        </div>
+        <div class="panel-footer text-center">
+          SNS Point : {{anime.getSnsPoint()}}
         </div>
       </div>
     </li>
