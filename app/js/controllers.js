@@ -101,42 +101,6 @@ angular.module("myApp.controllers", []).controller("seasonNavigationController",
   $scope.nextSeason = "#/" + next.year + "/" + next.season;
 
 
-}).controller("seasonController", function($scope) {
-
-  var arr = [
-    {
-      name: "2014年 冬",
-      link: "#/2014/winter/"
-    },
-    {
-      name: "2014年 春",
-      link: "#/2014/spring/"
-    },
-    {
-      name: "2014年 夏",
-      link: "#/2014/summer/"
-    },
-    {
-      name: "2014年 秋",
-      link: "#/2014/autumn/"
-    },
-    {
-      name: "2013年 冬",
-      link: "#/2013/winter/"
-    },
-    {
-      name: "2013年 春",
-      link: "#/2013/spring/"
-    },
-    {
-      name: "2013年 夏",
-      link: "#/2013/summer/"
-    },
-    {
-      name: "2013年 秋",
-      link: "#/2013/autumn/"
-    }
-  ];
-
-  $scope.seasons = arr;
+}).controller("seasonController", function($scope, seasonService) {
+  $scope.seasons = seasonService.getSeasons();
 });

@@ -1,7 +1,11 @@
 'use strict';
 
 // シーズンに関する機能を提供するユーティリティ
-angular.module('myApp').factory("seasonService", function() {
+angular.module('myApp').factory("seasonService", function($http) {
+  var seasons;
+  $http.get("data/seasons.json").success(function(data) {
+    seasons = data;
+  });
   return {
     // 現在日時から現在のシーズンを求める関数
     currentSeason: function() {
@@ -87,6 +91,10 @@ angular.module('myApp').factory("seasonService", function() {
     toJapaneseForSeason: function(season) {
       var seasons = {"spring": "春", "summer": "夏", "autumn": "秋", "winter": "冬"};
       return seasons[season];
+    },
+    // 選択可能なシーズンの一覧
+    getSeasons: function() {
+      return seasons;
     }
   };
 });
