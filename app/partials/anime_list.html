@@ -11,7 +11,7 @@
 <article class="container-fluid">
   <div class="row">
     <div class="input-group">
-      <div class="col-xs-6 col-md-6 btn-group">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 btn-group">
         <button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown">
           Sort<span class="caret"></span>
         </button>
@@ -20,13 +20,13 @@
           <li><a href="" ng-click="sortPoint()">SNS Point</a></li>
         </ul>
       </div>
-      <div class="col-xs-6 col-md-6 input-group">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 input-group">
         <input type="text" class="form-control" placeholder="タイトルを入力して絞り込めます" ng-model="filter.title">
       </div>
     </div>
   </div>
   <ul id="anime_list" class="row">
-    <li class="col-xs-4 col-md-4" ng-repeat="anime in animes | filter:filter">
+    <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="anime in animes | filter:filter">
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title text-center">{{anime.getTitle()}}</h3>
