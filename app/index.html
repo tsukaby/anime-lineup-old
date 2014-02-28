@@ -36,9 +36,26 @@
             <li><a href="#">About</a></li>
             <li><a href="#/season_calendar">Seasons</a></li>
           </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" placeholder="Title" class="form-control" ng-model="searchWord.title">
+          </form>
         </div>
       </div>
     </nav>
+    <div ng-show="searchWord.title.length > 2" class="container-fluid" style="background: #E8E8E8" ng-controller="animeSearchController">
+      <a class="search-close" ng-click="hideResults()" href="">
+        <span class="glyphicon glyphicon-remove search-close-icon"></span> Close
+      </a>
+      <div>
+        <ul class="list-group">
+          <li ng-repeat="anime in animes | filter:searchWord" class="list-group-item">
+            {{anime.title}}
+            <span class="badge" style="background: #d58512">{{anime.year}} {{anime.season}}</span>
+            <span class="badge">{{anime.snsPoint}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
     <hr>
     <div ng-view></div>
     <footer>
