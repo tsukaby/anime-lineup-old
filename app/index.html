@@ -6,13 +6,6 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet" type="text/css">
-    <script src="lib/jquery-2.1.0.min.js"></script>
-    <script src="lib/bootstrap.min.js"></script>
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/angular/angular-route.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/services.js"></script>
-    <script src="js/controllers.js"></script>
   </head>
   <body id="index_body" ng-app="myApp" ng-init="targetOfPartial = 'anime_list'">
     <div id="fb-root"></div>
@@ -36,9 +29,26 @@
             <li><a href="#">About</a></li>
             <li><a href="#/season_calendar">Seasons</a></li>
           </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" placeholder="Title" class="form-control" ng-model="searchWordService.title">
+          </form>
         </div>
       </div>
     </nav>
+    <div ng-show="searchWordService.title.length > 2" class="container-fluid" style="background: #E8E8E8" ng-controller="animeSearchController">
+      <a class="search-close" ng-click="searchWordService.title = null" href="">
+        <span class="glyphicon glyphicon-remove search-close-icon"></span> Close
+      </a>
+      <div>
+        <ul class="list-group">
+          <li ng-repeat="anime in animes | filter:searchWordService.title" class="list-group-item">
+            {{anime.title}}
+            <a href=""><span class="badge pull-right" style="background: {{anime.season | seasonColor}}">{{anime.year}} {{anime.season}}</span></a>
+            <span class="badge pull-right">{{anime.snsPoint}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
     <hr>
     <div ng-view></div>
     <footer>
@@ -64,5 +74,13 @@
           Copyright &copy; 2014 tsukaby.com all rights reserved.</p>
       </div>
     </footer>
+    <script src="lib/jquery-2.1.0.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/services.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/filters.js"></script>
   </body>
 </html>

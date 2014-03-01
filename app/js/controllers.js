@@ -131,4 +131,8 @@ angular.module("myApp.controllers", []).controller("seasonNavigationController",
 
 }).controller("seasonController", function($scope, seasonService) {
   $scope.seasons = seasonService.getSeasons();
+}).controller("animeSearchController", function($scope, $http) {
+  $http.get("data/all_animes.json").success(function(data) {
+    $scope.animes = data;
+  });
 });

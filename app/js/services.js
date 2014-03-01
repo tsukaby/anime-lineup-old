@@ -109,3 +109,7 @@ angular.module('myApp').factory("seasonService", function($http) {
     }
   };
 });
+
+angular.module('myApp').value("searchWordService", {
+  title: ""
+});
