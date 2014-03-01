@@ -198,5 +198,37 @@
     "snsPoint": 0,
     "season": "winter",
     "year": 2014
+  },
+  {
+    "title": "俺の彼女と幼なじみが修羅場すぎる",
+    "url": "http://www.oreshura.net/",
+    "thumbnailDelay": 0,
+    "snsPoint": 0,
+    "season": "winter",
+    "year": 2013
+  },
+  {
+    "title": "やはり俺の青春ラブコメはまちがっている。",
+    "url": "http://www.tbs.co.jp/anime/oregairu/",
+    "thumbnailDelay": 0,
+    "snsPoint": 0,
+    "season": "spring",
+    "year": 2013
+  },
+  {
+    "title": "ダンガンロンパ",
+    "url": "http://www.geneonuniversal.jp/rondorobe/anime/danganronpa/",
+    "thumbnailDelay": 0,
+    "snsPoint": 0,
+    "season": "summer",
+    "year": 2013
+  },
+  {
+    "title": "ストライク・ザ・ブラッド",
+    "url": "http://www.strike-the-blood.com/",
+    "thumbnailDelay": 0,
+    "snsPoint": 0,
+    "season": "autumn",
+    "year": 2013
   }
 ]
