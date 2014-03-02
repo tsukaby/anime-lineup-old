@@ -41,7 +41,7 @@
       </a>
       <div>
         <ul class="list-group">
-          <li ng-repeat="anime in animes | filter:searchWordService.title" class="list-group-item">
+          <li ng-repeat="anime in animes | filter:{title:searchWordService.title}" class="list-group-item">
             {{anime.title}}
             <a href=""><span class="badge pull-right" style="background: {{anime.season | seasonColor}}">{{anime.year}} {{anime.season}}</span></a>
             <span class="badge pull-right">{{anime.snsPoint}}</span>
