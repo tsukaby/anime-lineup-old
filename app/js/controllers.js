@@ -64,8 +64,7 @@ var SeasonEnum = {
 };
 
 /* Controllers */
-angular.module("myApp.controllers", []).controller("seasonNavigationController", function($scope, $routeParams, $rootScope, seasonService) {
-}).controller("animeListController", function($scope, $http, $routeParams, seasonService, $filter) {
+angular.module("myApp.controllers", []).controller("animeListController", function($scope, $http, $routeParams, seasonService, $filter) {
   $scope.changeSeason = function(year, season) {
     
     //すべてのアニメの一覧から特定シーズンのものだけを抜き出して設定
