@@ -32,6 +32,9 @@ var Anime = {
   getThumbnailURL: function() {
     return "http://capture.heartrails.com/200x200/delay=" + this.thumbnailDelay + "?" + this.url;
   },
+  getThumbnailURL2: function(sizeX, sizeY) {
+    return "http://capture.heartrails.com/" + sizeX + "x" + sizeY + "/delay=" + this.thumbnailDelay + "?" + this.url;
+  },
   getEncodedURL: function() {
     return encodeURIComponent(this.url);
   },
@@ -39,7 +42,10 @@ var Anime = {
     return "http://b.hatena.ne.jp/entry/" + this.url;
   },
   getFacebookButtonURL: function() {
-    return "http://www.facebook.com/plugins/like.php?href=" + this.getEncodedURL() + "&amp;width&amp;layout=box_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=65";
+    return "http://www.facebook.com/plugins/like.php?href=" + this.getURL() + "&width&layout=box_count&action=like&show_faces=false&share=false&height=65&appId=215921371931439";
+  },
+  getWikipediaURL: function() {
+    return "http://ja.wikipedia.org/wiki/" + this.getTitle();
   },
   getSnsPoint: function() {
     return this.snsPoint;
@@ -64,7 +70,7 @@ var SeasonEnum = {
 };
 
 /* Controllers */
-angular.module("myApp.controllers", []).controller("animeListController", function($scope, $http, $routeParams, seasonService, $filter) {
+angular.module("myApp.controllers", []).controller("animeListController", function($scope, $http, $routeParams, seasonService, $filter, $modal, $sce) {
   $scope.changeSeason = function(year, season) {
     
     //すべてのアニメの一覧から特定シーズンのものだけを抜き出して設定
@@ -75,7 +81,10 @@ angular.module("myApp.controllers", []).controller("animeListController", functi
       var animes = [];
       for (var i = 0; i < arr.length; i++) {
         //オブジェクト作成
-        animes.push(object(Anime, arr[i]));
+        var obj = object(Anime, arr[i]);
+        //var tmp = "http://www.facebook.com/plugins/like.php?href=" + obj.getURL() + "&width&layout=box_count&action=like&show_faces=false&share=false&height=65&appId=215921371931439";
+        //obj.fbURL = $sce.trustAsResourceUrl(tmp);
+        animes.push(obj);
       }
       
       $scope.animes = animes;
@@ -131,6 +140,24 @@ angular.module("myApp.controllers", []).controller("animeListController", functi
     $scope.desc = !desc;
   };
 
+  $scope.open = function(anime) {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'partials/anime_detail.html',
+      controller: ModalInstanceCtrl,
+      resolve: {
+        anime: function() {
+          return anime;
+        }
+      }
+    });
+
+    modalInstance.result.then(function() {
+    }, function() {
+    });
+  };
+
+
 
 
 }).controller("seasonController", function($scope, seasonService) {
@@ -140,3 +167,12 @@ angular.module("myApp.controllers", []).controller("animeListController", functi
     $scope.animes = data;
   });
 });
+
+var ModalInstanceCtrl = function($scope, $modalInstance, anime) {
+
+  $scope.anime = anime;
+
+  $scope.close = function() {
+    $modalInstance.close();
+  };
+};

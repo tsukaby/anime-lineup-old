@@ -6,6 +6,7 @@
 }
 ul#introduce {
   text-align: center;
+  height: 70px;
 }
 ul li {
 	list-style-type: none;

@@ -2,8 +2,14 @@
 
 angular.module('myApp', [
   'ngRoute',
-  'myApp.controllers'
-]).config(['$routeProvider', function($routeProvider) {
+  'myApp.controllers',
+  'ui.bootstrap'
+]).config(['$routeProvider', '$sceDelegateProvider', function($routeProvider, $sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+      'self',
+      'http://www.facebook.com/**'
+    ]);
+
     return $routeProvider.when("/", {
       controller: 'animeListController',
       templateUrl: 'partials/anime_list.html'
