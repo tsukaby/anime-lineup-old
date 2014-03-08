@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>アニメラインナップ</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body id="index_body" ng-app="myApp" ng-init="targetOfPartial = 'anime_list'">
+    <nav class="navbar navbar-static-top navbar-blue navbar-settings">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button class="navbar-toggle" type="button"></button>
+          <a class="navbar-brand" href="#">アニメラインナップ</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">About</a></li>
+            <li><a href="#/season_calendar">Seasons</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" placeholder="Title" class="form-control" ng-model="searchWordService.title">
+          </form>
+        </div>
+      </div>
+    </nav>
+    <div ng-show="searchWordService.title.length > 2" class="container-fluid" style="background: #E8E8E8" ng-controller="animeSearchController">
+      <a class="search-close" ng-click="searchWordService.title = null" href="">
+        <span class="glyphicon glyphicon-remove search-close-icon"></span> Close
+      </a>
+      <div>
+        <ul class="list-group">
+          <li ng-repeat="anime in animes | filter:{title:searchWordService.title}" class="list-group-item">
+            {{anime.title}}
+            <a href=""><span class="badge pull-right" style="background: {{anime.season | seasonColor}}">{{anime.year}} {{anime.season}}</span></a>
+            <span class="badge pull-right">{{anime.snsPoint}}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div ng-view></div>
+    <footer>
+      <hr>
+      <div class="container">
+        <div>
+          <ul>
+            <li>
+              <div class="fb-like" data-layout="button_count" data-action="like" data-show-faces="false" data-share="false"></div>
+            </li>
+          </ul>
+        </div>
+        <p class="credit">各期ごとのアニメのラインナップと簡易的な人気度の指標を表したwebサービスです。<br>
+          Copyright &copy; 2014 tsukaby.com all rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- build:js(app) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/controllers.js"></script>
+    <script src="scripts/services/services.js"></script>
+    <script src="scripts/filters/filters.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
