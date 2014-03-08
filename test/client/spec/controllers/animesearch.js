@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: AnimesearchCtrl', function () {
+describe('Controller: AnimeSearchCtrl', function () {
 
   // load the controller's module
   beforeEach(module('animeLineupApp'));
 
-  var AnimesearchCtrl,
+  var AnimeSearchCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    AnimesearchCtrl = $controller('AnimesearchCtrl', {
+    AnimeSearchCtrl = $controller('AnimeSearchCtrl', {
       $scope: scope
     });
   }));

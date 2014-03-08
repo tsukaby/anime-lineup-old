@@ -22,6 +22,6 @@ angular.module('animeLineupApp', [
       controller: 'SeasonCtrl',
       templateUrl: 'partials/season_list.html'
     });
-  }).run(function($route, seasonFactory) {
+  }).run(function($route, SeasonService) {
   // seasonServiceを始めに初期化するため、Inject
 });

@@ -1,6 +1,6 @@
 'use strict';
 
 angular.module('animeLineupApp')
-  .controller('SeasonCtrl', function($scope, seasonFactory) {
-  $scope.seasons = seasonFactory.getSeasons();
+  .controller('SeasonCtrl', function($scope, SeasonService) {
+  $scope.seasons = SeasonService.getSeasons();
 });

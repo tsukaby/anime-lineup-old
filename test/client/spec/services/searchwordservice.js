@@ -1,18 +1,18 @@
 'use strict';
 
-describe('Service: searchWordService', function () {
+describe('Service: SearchWordService', function () {
 
   // load the service's module
   beforeEach(module('animeLineupApp'));
 
   // instantiate service
-  var searchWordService;
-  beforeEach(inject(function (_searchWordService_) {
-    searchWordService = _searchWordService_;
+  var SearchWordService;
+  beforeEach(inject(function (_SearchWordService_) {
+    SearchWordService = _SearchWordService_;
   }));
 
   it('should do something', function () {
-    expect(!!searchWordService).toBe(true);
+    expect(!!SearchWordService).toBe(true);
   });
 
 });

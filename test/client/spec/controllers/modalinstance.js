@@ -1,17 +1,17 @@
 'use strict';
 
-describe('Controller: ModalinstanceCtrl', function () {
+describe('Controller: ModalInstanceCtrl', function () {
 
   // load the controller's module
   beforeEach(module('animeLineupApp'));
 
-  var ModalinstanceCtrl,
+  var ModalInstanceCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    ModalinstanceCtrl = $controller('ModalinstanceCtrl', {
+    ModalInstanceCtrl = $controller('ModalInstanceCtrl', {
       $scope: scope
     });
   }));

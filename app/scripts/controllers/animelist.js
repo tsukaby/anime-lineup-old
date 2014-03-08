@@ -53,24 +53,7 @@ var Anime = {
   }
 };
 
-//Seasonクラス
-var Season = {
-  name: '冬',
-  year: 2000,
-  getFullName: function() {
-    return this.year + '年 ' + this.name;
-  }
-};
-
-//Season enum
-var SeasonEnum = {
-  spring: 'spring',
-  summer: 'summer',
-  autumn: 'autumn',
-  winter: 'winter'
-};
-
-angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $http, $routeParams, seasonFactory, $filter, $modal, $sce) {
+angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $http, $routeParams, SeasonService, $filter, $modal) {
   $scope.changeSeason = function(year, season) {
     
     //すべてのアニメの一覧から特定シーズンのものだけを抜き出して設定
@@ -82,8 +65,6 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $h
       for (var i = 0; i < arr.length; i++) {
         //オブジェクト作成
         var obj = object(Anime, arr[i]);
-        //var tmp = 'http://www.facebook.com/plugins/like.php?href=' + obj.getURL() + '&width&layout=box_count&action=like&show_faces=false&share=false&height=65&appId=215921371931439';
-        //obj.fbURL = $sce.trustAsResourceUrl(tmp);
         animes.push(obj);
       }
       
@@ -97,7 +78,7 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $h
   // TODO:不正なパラメータのエラー処理
   if ($routeParams.year === undefined || $routeParams.season === undefined) {
     //パラメタなしアクセスの場合は現在日付から現在シーズンを求める
-    var current = seasonFactory.currentSeason();
+    var current = SeasonService.currentSeason();
     year = current.year;
     season = current.season;
   } else {
@@ -108,22 +89,22 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $h
   $scope.changeSeason(year, season);
 
   //現在のシーズンを設定
-  $scope.currentSeason = year + '年 ' + seasonFactory.toJapaneseForSeason(season);
+  $scope.currentSeason = year + '年 ' + SeasonService.toJapaneseForSeason(season);
 
   //前と次のシーズンのリンクを設定
 
-  var previous = seasonFactory.previousSeason(year, season);
-  var next = seasonFactory.nextSeason(year, season);
+  var previous = SeasonService.previousSeason(year, season);
+  var next = SeasonService.nextSeason(year, season);
   $scope.previousSeason = '#/' + previous.year + '/' + previous.season;
   $scope.nextSeason = '#/' + next.year + '/' + next.season;
 
   //disabledクラス追加、リンクは空
-  if (!seasonFactory.hasSeasons(previous)) {
+  if (!SeasonService.hasSeasons(previous)) {
     //
     $scope.previousSeason = '';
   }
 
-  if (!seasonFactory.hasSeasons(next)) {
+  if (!SeasonService.hasSeasons(next)) {
     //
     $scope.nextSeason = '';
   }
