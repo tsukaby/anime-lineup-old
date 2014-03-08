@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
-  <body id="index_body" ng-app="myApp" ng-init="targetOfPartial = 'anime_list'">
+  <body id="index_body" ng-app="animeLineupApp" ng-init="targetOfPartial = 'anime_list'">
     <nav class="navbar navbar-static-top navbar-blue navbar-settings">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -26,7 +26,7 @@
         </div>
       </div>
     </nav>
-    <div ng-show="searchWordService.title.length > 2" class="container-fluid" style="background: #E8E8E8" ng-controller="animeSearchController">
+    <div ng-show="searchWordService.title.length > 2" class="container-fluid" style="background: #E8E8E8" ng-controller="AnimeSearchCtrl">
       <a class="search-close" ng-click="searchWordService.title = null" href="">
         <span class="glyphicon glyphicon-remove search-close-icon"></span> Close
       </a>
@@ -62,13 +62,20 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-ui-bootstrap-bower/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/animelist.js"></script>
+    <script src="scripts/controllers/animesearch.js"></script>
+    <script src="scripts/controllers/season.js"></script>
     <script src="scripts/controllers/controllers.js"></script>
-    <script src="scripts/services/services.js"></script>
+    <script src="scripts/services/searchwordservice.js"></script>
+    <script src="scripts/services/seasonfactory.js"></script>
     <script src="scripts/filters/filters.js"></script>
     <!-- endbuild -->
   </body>

@@ -1,7 +1,7 @@
 'use strict';
 
 // シーズンに関する機能を提供するユーティリティ
-angular.module('myApp').factory("seasonService", function($http) {
+angular.module('animeLineupApp').factory("seasonFactory", function($http) {
   var seasons;
   $http.get("data/seasons.json", {cache: true}).success(function(data) {
     seasons = data;
@@ -108,8 +108,4 @@ angular.module('myApp').factory("seasonService", function($http) {
       return false;
     }
   };
-});
-
-angular.module('myApp').value("searchWordService", {
-  title: ""
 });
