@@ -1,9 +1,9 @@
 'use strict';
 
 // シーズンに関する機能を提供するユーティリティ
-angular.module('animeLineupApp').factory("seasonFactory", function($http) {
+angular.module('animeLineupApp').factory('seasonFactory', function($http) {
   var seasons;
-  $http.get("data/seasons.json", {cache: true}).success(function(data) {
+  $http.get('data/seasons.json', {cache: true}).success(function(data) {
     seasons = data;
   });
   return {
@@ -30,29 +30,29 @@ angular.module('animeLineupApp').factory("seasonFactory", function($http) {
     //引数から次のシーズンを求める関数
     nextSeason: function(year, season) {
       switch (season) {
-        case "winter":
+        case 'winter':
           return {
             year: year,
-            season: "spring"
+            season: 'spring'
           };
           break;
-        case "spring":
+        case 'spring':
           return {
             year: year,
-            season: "summer"
+            season: 'summer'
           };
           break;
-        case "summer":
+        case 'summer':
           return {
             year: year,
-            season: "autumn"
+            season: 'autumn'
           };
           break;
-        case "autumn":
+        case 'autumn':
           // アニメは冬シーズンから始まるため、秋の次は年度が増える
           return {
             year: Number(year) + 1,
-            season: "winter"
+            season: 'winter'
           };
           break;
       }
@@ -60,36 +60,36 @@ angular.module('animeLineupApp').factory("seasonFactory", function($http) {
     //引数から前のシーズンを求める関数
     previousSeason: function(year, season) {
       switch (season) {
-        case "winter":
+        case 'winter':
           // アニメは冬シーズンから始まるため、冬の前は年度が減る
           return {
             year: Number(year) - 1,
-            season: "autumn"
+            season: 'autumn'
           };
           break;
-        case "spring":
+        case 'spring':
           return {
             year: year,
-            season: "winter"
+            season: 'winter'
           };
           break;
-        case "summer":
+        case 'summer':
           return {
             year: year,
-            season: "spring"
+            season: 'spring'
           };
           break;
-        case "autumn":
+        case 'autumn':
           return {
             year: year,
-            season: "summer"
+            season: 'summer'
           };
           break;
       }
     },
     //季節名を日本語に変える関数
     toJapaneseForSeason: function(season) {
-      var seasons = {"spring": "春", "summer": "夏", "autumn": "秋", "winter": "冬"};
+      var seasons = {'spring': '春', 'summer': '夏', 'autumn': '秋', 'winter': '冬'};
       return seasons[season];
     },
     // 選択可能なシーズンの一覧

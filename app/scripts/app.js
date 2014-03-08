@@ -6,22 +6,22 @@ angular.module('animeLineupApp', [
   'ngSanitize',
   'ngRoute',
   'ui.bootstrap'
-]).config(['$routeProvider', '$sceDelegateProvider', function($routeProvider, $sceDelegateProvider) {
+]).config(function($routeProvider, $sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist([
       'self',
       'http://www.facebook.com/**'
     ]);
 
-    return $routeProvider.when("/", {
+    return $routeProvider.when('/', {
       controller: 'AnimeListCtrl',
       templateUrl: 'partials/anime_list.html'
-    }).when("/:year/:season", {
+    }).when('/:year/:season', {
       controller: 'AnimeListCtrl',
       templateUrl: 'partials/anime_list.html'
-    }).when("/season_calendar", {
+    }).when('/season_calendar', {
       controller: 'SeasonCtrl',
       templateUrl: 'partials/season_list.html'
     });
-  }]).run(function($route, seasonFactory) {
+  }).run(function($route, seasonFactory) {
   // seasonServiceを始めに初期化するため、Inject
 });
