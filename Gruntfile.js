@@ -359,6 +359,14 @@ module.exports = function (grunt) {
             'server.js',
             'lib/**/*'
           ]
+        },{
+          expand: true,
+          dot: true,
+          cwd: '<%= yeoman.app %>',
+          dest: '<%= yeoman.dist %>',
+          src: [
+            'data/**/*'
+          ]
         }]
       },
       styles: {
