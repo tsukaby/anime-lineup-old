@@ -1,0 +1,54 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+
+#anime_list {
+  padding: 0px;
+  margin: 2px;
+}
+ul#introduce {
+  text-align: center;
+  height: 70px;
+}
+ul li {
+    list-style-type: none;
+}
+ul#introduce li {
+  display: inline;
+  float: left;
+}
+#anime_list .panel-body {
+  text-align: center;
+}
+ul {
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+}
+#index_body {
+  background-color: #FAFAFA;
+}
+
+.panel-title p {
+  color: #424272;
+}
+.navbar-blue {
+  background-color: #0c3b81;
+  color: white;
+}
+#index_body footer .container {
+  text-align: center;
+}
+#seasons_dialog_content {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.navbar-settings {
+  margin-bottom: 0px;
+}
