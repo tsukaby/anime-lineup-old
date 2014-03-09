@@ -18,6 +18,12 @@ angular.module('animeLineupApp', [
     }).when('/:year/:season', {
       controller: 'AnimeListCtrl',
       templateUrl: 'partials/anime_list.html'
+    }).when('/register_anime', {
+      controller: 'RegisterAnimeCtrl',
+      templateUrl: 'partials/register_anime.html'
+    }).when('/register_anime/:year/:season', {
+      controller: 'RegisterAnimeCtrl',
+      templateUrl: 'partials/register_anime.html'
     }).when('/season_calendar', {
       controller: 'SeasonCtrl',
       templateUrl: 'partials/season_list.html'
