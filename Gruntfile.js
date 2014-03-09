@@ -338,7 +338,8 @@ module.exports = function (grunt) {
             '.htaccess',
             'bower_components/**/*',
             'images/{,*/}*.{webp}',
-            'fonts/**/*'
+            'fonts/**/*',
+            'data/**/*'
           ]
         }, {
           expand: true,
@@ -358,14 +359,6 @@ module.exports = function (grunt) {
             'package.json',
             'server.js',
             'lib/**/*'
-          ]
-        },{
-          expand: true,
-          dot: true,
-          cwd: '<%= yeoman.app %>',
-          dest: '<%= yeoman.dist %>',
-          src: [
-            'data/**/*'
           ]
         }]
       },

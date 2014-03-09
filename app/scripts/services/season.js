@@ -11,7 +11,7 @@ var SeasonEnum = {
 
 // シーズンに関する機能を提供するユーティリティ
 angular.module('animeLineupApp').factory('SeasonService', function($http) {
-  var seasons;
+  var seasons = [];
   $http.get('data/seasons.json', {cache: true}).success(function(data) {
     seasons = data;
   });

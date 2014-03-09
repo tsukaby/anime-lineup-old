@@ -7,15 +7,17 @@
  * http://blog.tojiru.net/article/199670885.html
  */
 function object(o) {
-  var f = object.f, i, len, n, prop;
-  f.prototype = o;
-  n = new f;
-  for (i = 1, len = arguments.length; i < len; ++i)
-    for (prop in arguments[i])
+  var F = object.F, i, len, n, prop;
+  F.prototype = o;
+  n = new F();
+  for (i = 1, len = arguments.length; i < len; ++i) {
+    for (prop in arguments[i]) {
       n[prop] = arguments[i][prop];
+    }
+  }
   return n;
 }
-object.f = function() {
+object.F = function() {
 };
 
 //Animeクラス
