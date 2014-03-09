@@ -59,7 +59,7 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $h
   $scope.changeSeason = function(year, season) {
     
     //すべてのアニメの一覧から特定シーズンのものだけを抜き出して設定
-    $http.get('data/animes.json', {cache: true}).success(function(data) {
+    $http.get('api/animes', {cache: true}).success(function(data) {
       var arr = $filter('filter')(data, year);
       arr = $filter('filter')(arr, {season:season});
       
