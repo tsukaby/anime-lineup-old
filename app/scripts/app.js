@@ -21,7 +21,7 @@ angular.module('animeLineupApp', [
     }).when('/register_anime', {
       controller: 'RegisterAnimeCtrl',
       templateUrl: 'partials/register_anime.html'
-    }).when('/register_anime/:year/:season', {
+    }).when('/register_anime/:year/:season/:success', {
       controller: 'RegisterAnimeCtrl',
       templateUrl: 'partials/register_anime.html'
     }).when('/season_calendar', {

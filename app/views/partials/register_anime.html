@@ -1,4 +1,4 @@
-<div>
+<div class="container-fluid">
   <form class="form-horizontal" method="post" action="api/animes" role="form">
     <div class="form-group">
       <label for="inputTitle" class="col-sm-2 control-label">Title</label>
@@ -47,4 +47,5 @@
       </div>
     </div>
   </form>
+  <alert class="col-sm-offset-2 col-sm-8" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
 </div>
