@@ -25,6 +25,37 @@ see [generator-angular-fullstack](https://github.com/DaftMonk/generator-angular-
 
 ## Deployment
 
+Create production code.
+
 ```bash
 grunt build
+```
+
+Create production code and deploy to AWS Server.
+
+```bash
+grunt deploy
+```
+
+## Run
+### Development mode
+
+```bash
+grunt serve
+```
+
+### Production mode in development environment
+
+```bash
+grunt serve:dist
+```
+
+### Production mode
+
+In production server (e.g. AWS).
+
+```bash
+cd /var/www/apps/anime-lineup
+npm install
+NODE_ENV=production node server.js
 ```

@@ -440,6 +440,22 @@ module.exports = function (grunt) {
       test: {
         NODE_ENV: 'test'
       }
+    },
+
+    rsync: {
+      options: {
+        args: ["--verbose"],
+        exclude: [".git*","*.scss","node_modules"],
+        recursive: true
+      },
+      stage: {
+        options: {
+          src: "<%= yeoman.dist %>/*",
+          dest: "/var/www/apps/anime-lineup",
+          host: "aws-applications",
+          syncDestIgnoreExcl: true
+        }
+      }
     }
   });
 
@@ -543,4 +559,9 @@ module.exports = function (grunt) {
     'test',
     'build'
   ]);
+
+  grunt.loadNpmTasks('grunt-rsync');
+  grunt.registerTask('deploy', function(){
+    grunt.task.run(['build', 'rsync']);
+  })
 };
