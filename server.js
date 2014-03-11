@@ -27,10 +27,11 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 });
 
 // Populate empty DB with sample data
-//require('./lib/config/dummydata');
+if(process.env.NODE_ENV === 'development'){
+  // 開発環境用起動の場合はテスト用データをDBに投入
+  require('./lib/config/initialdata');
+}
 
-require('./lib/config/initialdata');
-  
 // Passport Configuration
 var passport = require('./lib/config/passport');
 
