@@ -100,17 +100,6 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $h
   $scope.previousSeason = '#/' + previous.year + '/' + previous.season;
   $scope.nextSeason = '#/' + next.year + '/' + next.season;
 
-  //disabledクラス追加、リンクは空
-  if (!SeasonService.hasSeasons(previous)) {
-    //
-    $scope.previousSeason = '';
-  }
-
-  if (!SeasonService.hasSeasons(next)) {
-    //
-    $scope.nextSeason = '';
-  }
-
   $scope.sortTitle = function() {
     var desc = !!$scope.desc;
     $scope.animes = $filter('orderBy')($scope.animes, 'title', desc);
