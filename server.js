@@ -32,9 +32,6 @@ if(process.env.NODE_ENV === 'development'){
   require('./lib/config/initialdata');
 }
 
-// Passport Configuration
-var passport = require('./lib/config/passport');
-
 var app = express();
 
 // Express settings
