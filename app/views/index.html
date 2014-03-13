@@ -21,7 +21,12 @@
             <li><a href="#/season_calendar">Seasons</a></li>
           </ul>
           <form class="navbar-form navbar-right">
-            <input type="text" placeholder="Title" class="form-control" ng-model="SearchWordService.title">
+            <div class="input-group">
+              <input type="text" placeholder="Title" class="form-control" ng-model="SearchWordService.title">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button" ng-click="SearchWordService.title = ''"><i class="glyphicon glyphicon-remove"></i></button>
+              </span>
+            </div>
           </form>
         </div>
       </div>
