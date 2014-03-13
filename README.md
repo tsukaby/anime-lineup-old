@@ -54,7 +54,9 @@ grunt serve:dist
 1. `lib/config/env/production.js`を編集し、DB URIを設定
 2. `grunt build`
 3. `cd dist`
-4. `git add .`
-5. `git push.aws`
-6. (Optional) `eb start`
+4. `eb init`
+aws.pushなどを利用するために行います。対話形式で設定を求められますが、デフォルト設定ファイルが存在するため、基本的にはEnterを押して進めます。
+5. `git add .`
+6. `git aws.push`
+7. (Optional) `eb start`
 
