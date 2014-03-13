@@ -357,7 +357,10 @@ module.exports = function (grunt) {
           src: [
             'package.json',
             'server.js',
-            'lib/**/*'
+            'lib/**/*',
+            // Amazon Elastic Beanstalk deploy settings
+            '.ebextensions/**/*',
+            '.elasticbeanstalk/**/*'
           ]
         }]
       },
