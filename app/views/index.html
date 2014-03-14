@@ -34,9 +34,6 @@
       </div>
     </nav>
     <div ng-show="SearchWordService.title.length > 2" class="container-fluid" style="background: #E8E8E8" ng-controller="AnimeSearchCtrl">
-      <a class="search-close" ng-click="SearchWordService.title = null" href="">
-        <span class="glyphicon glyphicon-remove search-close-icon"></span> Close
-      </a>
       <div>
         <ul class="list-group">
           <li ng-repeat="anime in animes | filter:{title:SearchWordService.title}" class="list-group-item">
@@ -45,6 +42,11 @@
             <span class="badge pull-right">{{anime.snsPoint}}</span>
           </li>
         </ul>
+      </div>
+      <div class="text-center">
+        <button type="button" class="btn btn-default btn-md" ng-click="SearchWordService.title = null">
+          <span class="glyphicon glyphicon-remove search-close-icon"></span> Close
+        </button>
       </div>
     </div>
     <div ng-view></div>
