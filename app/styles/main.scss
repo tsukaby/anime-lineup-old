@@ -2,6 +2,38 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 
+/* Extra small devices (tablets, 767px and down) */
+@media (max-width: $screen-xs-max) {
+  .panel-title {
+    font-size: 36px;
+  }
+
+  .btn-lg {
+    font-size: 40px;
+  }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min) {
+  .panel-title {
+    font-size: 36px;
+  }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) {
+  .panel-title {
+    font-size: 16px;
+  }
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: $screen-lg-min) {
+  .panel-title {
+    font-size: 16px;
+  }
+}
+
 #anime_list {
   padding: 0px;
   margin: 2px;

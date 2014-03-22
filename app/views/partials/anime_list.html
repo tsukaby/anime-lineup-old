@@ -11,7 +11,7 @@
 <article class="container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 btn-group pull-right">
+      <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 btn-group pull-right">
         <button class="btn btn-default btn-sm dropdown-toggle sort-button pull-right" type="button" data-toggle="dropdown">
           Sort<span class="caret"></span>
         </button>
@@ -23,7 +23,7 @@
     </div>
   </div>
   <ul id="anime_list" class="row">
-    <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="anime in animes | filter:filter">
+    <li class="col-xs-12 col-sm-12 col-md-4 col-lg-3" ng-repeat="anime in animes | filter:filter">
       <div class="panel panel-primary">
         <div class="panel-heading" style="height:55px;">
           <a href="" ng-click="open(anime)"><h3 class="panel-title text-center" style="color:white;">{{anime.getTitle()}}</h3></a>
