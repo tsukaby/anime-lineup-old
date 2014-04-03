@@ -18,15 +18,15 @@
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li>
-            <form class="navbar-form navbar-right" style="width:300px">
-              <div class="input-group">
-                <input type="text" placeholder="Title" class="form-control" ng-model="SearchWordService.title">
-                <span class="input-group-btn">
-                  <button class="btn btn-default" type="button" ng-click="SearchWordService.title = ''"><i class="glyphicon glyphicon-remove"></i></button>
-                </span>
-              </div>
-            </form>
+            <li ng-controller="AnimeSearchCtrl">
+              <form class="navbar-form navbar-right" style="width:300px">
+                <div class="input-group">
+                  <input type="text" placeholder="Title" class="form-control" ng-model="SearchWordService.title">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="AnimeSearchService.search(SearchWordService.title)"><i class="glyphicon glyphicon-search"></i></button>
+                  </span>
+                </div>
+              </form>
             </li>
             <li><a href="#">About</a></li>
             <li><a href="#/season_calendar">Seasons</a></li>
@@ -34,22 +34,6 @@
         </div>
       </div>
     </nav>
-    <div ng-show="SearchWordService.title.length > 2" class="container-fluid" style="background: #E8E8E8" ng-controller="AnimeSearchCtrl">
-      <div>
-        <ul class="list-group">
-          <li ng-repeat="anime in animes | filter:{title:SearchWordService.title}" class="list-group-item">
-            {{anime.title}}
-            <a href="#/{{anime.year}}/{{anime.season}}" ng-click="SearchWordService.title = null"><span class="badge pull-right" style="background: {{anime.season | SeasonColorFilter}}">{{anime.year}} {{anime.season}}</span></a>
-            <span class="badge pull-right">{{anime.snsPoint}}</span>
-          </li>
-        </ul>
-      </div>
-      <div class="text-center">
-        <button type="button" class="btn btn-default btn-md" ng-click="SearchWordService.title = null">
-          <span class="glyphicon glyphicon-remove search-close-icon"></span> Close
-        </button>
-      </div>
-    </div>
     <div ng-view></div>
     <footer>
       <hr>
@@ -98,6 +82,7 @@
     <script src="scripts/controllers/register_anime.js"></script>
     <script src="scripts/services/searchword.js"></script>
     <script src="scripts/services/season.js"></script>
+    <script src="scripts/services/animesearch.js"></script>
     <script src="scripts/filters/seasoncolor.js"></script>
     <!-- endbuild -->
   </body>
