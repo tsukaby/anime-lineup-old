@@ -47,7 +47,7 @@ grunt serve:dist
 
 ## デプロイ
 
-[ebコマンドを利用するためにAmazon Elastic Beanstalk Command Line Toolが必要です。](http://aws.amazon.com/code/6752709412171743)
+ebコマンドを利用するために[Amazon Elastic Beanstalk Command Line Tool](http://aws.amazon.com/code/6752709412171743)が必要です。
 
 製品コードを生成を生成し、Amazon Elastic Beanstalkにアップロードすることでデプロイされます。
 
@@ -57,6 +57,7 @@ grunt serve:dist
 4. `eb init`
 aws.pushなどを利用するために行います。対話形式で設定を求められますが、デフォルト設定ファイルが存在するため、基本的にはEnterを押して進めます。
 5. `git add .`
-6. `git aws.push`
-7. (Optional) `eb start`
-
+6. `git commit -m'deploy'`
+7. `git aws.push`
+8. (Optional) `eb start`
+既にElastic Beanstalkが起動している場合は不要です。
