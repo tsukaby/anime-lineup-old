@@ -6,13 +6,13 @@ describe('Service: AnimesValue', function () {
   beforeEach(module('animeLineupApp'));
 
   // instantiate service
-  var animes;
+  var AnimesValue;
   beforeEach(inject(function (_AnimesValue_) {
-    animes = _animes_;
+    AnimesValue = _AnimesValue_;
   }));
 
   it('should do something', function () {
-    expect(!!animes).toBe(true);
+    expect(!!AnimesValue).toBe(true);
   });
 
 });
