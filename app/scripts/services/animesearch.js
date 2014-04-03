@@ -54,7 +54,7 @@ var Anime = {
   }
 };
 
-angular.module('animeLineupApp').service('AnimeSearchService', function($http, AnimesValue, SeasonService, SeasonConstant) {
+angular.module('animeLineupApp').service('AnimeSearchService', function($http, AnimesValue, SeasonConstant) {
   this.searchByTitle = function(title) {
     if(title === undefined){
       return;

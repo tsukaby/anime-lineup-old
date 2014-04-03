@@ -11,8 +11,10 @@ describe('Service: SearchWordService', function () {
     SearchWordService = _SearchWordService_;
   }));
 
-  it('should do something', function () {
+  it('SearchWordServiceが定義されていること', function () {
     expect(!!SearchWordService).toBe(true);
   });
+
+  //SearchWordServiceはvalueレシピであり、値を格納用途のため、これ以上のテストは省略
 
 });

@@ -6,17 +6,35 @@ describe('Controller: RegisterAnimeCtrl', function () {
   beforeEach(module('animeLineupApp'));
 
   var RegisterAnimeCtrl,
-    scope;
+    scope,
+    routeParams;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, $routeParams) {
     scope = $rootScope.$new();
+    routeParams = $routeParams;
     RegisterAnimeCtrl = $controller('RegisterAnimeCtrl', {
-      $scope: scope
+      $scope: scope,
+      $routeParams: routeParams
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    //expect(scope.awesomeThings.length).toBe(3);
+  it('routeParamにsuccessがない場合、アラートが存在しないこと', function () {
+    routeParams.success = undefined;
+    expect(scope.alert).toBeUndefined();
+  });
+
+  beforeEach(inject(function ($controller, $rootScope, $routeParams) {
+    scope = $rootScope.$new();
+    routeParams = $routeParams;
+    routeParams.success = 'success';
+    RegisterAnimeCtrl = $controller('RegisterAnimeCtrl', {
+      $scope: scope,
+      $routeParams: routeParams
+    });
+  }));
+
+  it('routeParamにsuccessがある場合、アラートが1つ存在すること', function () {
+    expect(scope.alerts.length).toBe(1);
   });
 });
