@@ -19,11 +19,11 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li ng-controller="AnimeSearchCtrl">
-              <form class="navbar-form navbar-right" style="width:300px">
+              <form class="navbar-form navbar-right" style="width:300px" ng-submit="searchByTitle(SearchWordService.title)">
                 <div class="input-group">
                   <input type="text" placeholder="Title" class="form-control" ng-model="SearchWordService.title">
                   <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" ng-click="AnimeSearchService.search(SearchWordService.title)"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-default" type="button" ng-click="searchByTitle(SearchWordService.title)"><i class="glyphicon glyphicon-search"></i></button>
                   </span>
                 </div>
               </form>
@@ -83,6 +83,9 @@
     <script src="scripts/services/searchword.js"></script>
     <script src="scripts/services/season.js"></script>
     <script src="scripts/services/animesearch.js"></script>
+    <script src="scripts/services/animes.js"></script>
+    <script src="scripts/services/seasonconstant.js"></script>
+    <script src="scripts/services/navigationservice.js"></script>
     <script src="scripts/filters/seasoncolor.js"></script>
     <!-- endbuild -->
   </body>
