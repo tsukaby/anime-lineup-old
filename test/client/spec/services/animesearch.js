@@ -6,13 +6,13 @@ describe('Service: AnimeSearchService', function () {
   beforeEach(module('animeLineupApp'));
 
   // instantiate service
-  var AnimeSearch;
+  var AnimeSearchService;
   beforeEach(inject(function (_AnimeSearchService_) {
-    AnimeSearch = _AnimeSearch_;
+    AnimeSearchService = _AnimeSearchService_;
   }));
 
   it('should do something', function () {
-    expect(!!AnimeSearch).toBe(true);
+    expect(!!AnimeSearchService).toBe(true);
   });
 
 });
