@@ -21,13 +21,13 @@ angular.module('animeLineupApp').factory('SeasonService', function($http) {
       var now = new Date();
       var year = now.getFullYear();
       var season;
-      if (1 <= now.getMonth() && now.getMonth() <= 3) {
+      if (0 <= now.getMonth() && now.getMonth() <= 2) {
         season = SeasonEnum.winter;
-      } else if (4 <= now.getMonth() && now.getMonth() <= 6) {
+      } else if (3 <= now.getMonth() && now.getMonth() <= 5) {
         season = SeasonEnum.spring;
-      } else if (7 <= now.getMonth() && now.getMonth() <= 9) {
+      } else if (6 <= now.getMonth() && now.getMonth() <= 8) {
         season = SeasonEnum.summer;
-      } else if (10 <= now.getMonth() && now.getMonth() <= 12) {
+      } else if (9 <= now.getMonth() && now.getMonth() <= 11) {
         season = SeasonEnum.autumn;
       }
 
