@@ -5,7 +5,8 @@ angular.module('animeLineupApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'duScroll'
 ]).config(function($routeProvider, $sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist([
       'self',

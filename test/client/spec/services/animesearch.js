@@ -15,20 +15,22 @@ describe('Service: AnimeSearchService', function () {
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('api/animes/2014/spring').respond([
       {
-        title: "anime1",
-        url: "http://example.com/anime1",
+        title: 'anime1',
+        url: 'http://example.com/anime1',
         thumbnailDelay: 0,
         snsPoint: 0,
-        season: "spring",
+        season: 'spring',
         year: 2014
-      }]);
+      }
+    ]);
     $httpBackend.expectGET('api/seasons').respond([
       {
-        year: "2014",
-        season: "spring",
-        name: "2014年 春",
-        link: "#/2014/spring/"
-      }]);
+        year: '2014',
+        season: 'spring',
+        name: '2014年 春',
+        link: '#/2014/spring/'
+      }
+    ]);
     AnimeSearchService = _AnimeSearchService_;
     AnimesValue = _AnimesValue_;
     SeasonConstant = _SeasonConstant_;
