@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('animeLineupApp').filter('SeasonColorFilter', function() {
+angular.module('animeLineupApp').filter('seasonColorFilter', function() {
   return function(input) {
     if(input === 'winter'){
       return '#5141D9';

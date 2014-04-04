@@ -6,8 +6,7 @@ describe('Controller: AnimeListCtrl', function () {
   beforeEach(module('animeLineupApp'));
 
   var AnimeListCtrl,
-    scope,
-    SeasonConstant;
+    scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, SeasonConstant) {
