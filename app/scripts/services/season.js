@@ -38,6 +38,11 @@ angular.module('animeLineupApp').factory('SeasonService', function($http) {
     },
     //引数から次のシーズンを求める関数
     nextSeason: function(year, season) {
+      if(year === null || year === undefined || year === '' || isNaN(year)){
+        // 数値でない場合
+        return undefined;
+      }
+
       switch (season) {
         case 'winter':
           return {
@@ -66,6 +71,11 @@ angular.module('animeLineupApp').factory('SeasonService', function($http) {
     },
     //引数から前のシーズンを求める関数
     previousSeason: function(year, season) {
+      if(year === null || year === undefined || year === '' || isNaN(year)){
+        // 数値でない場合
+        return undefined;
+      }
+
       switch (season) {
         case 'winter':
           // アニメは冬シーズンから始まるため、冬の前は年度が減る
@@ -88,6 +98,8 @@ angular.module('animeLineupApp').factory('SeasonService', function($http) {
             year: year,
             season: 'summer'
           };
+        default:
+          return undefined;
       }
     },
     //季節名を日本語に変える関数

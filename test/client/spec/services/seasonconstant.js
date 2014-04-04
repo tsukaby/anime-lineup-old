@@ -11,8 +11,10 @@ describe('Service: SeasonConstant', function () {
     SeasonConstant = _SeasonConstant_;
   }));
 
-  it('should do something', function () {
+  it('SeasonConstantが定義されていること', function () {
     expect(!!SeasonConstant).toBe(true);
   });
+
+  //SeasonConstantはconstantレシピであり、値を格納用途のため、これ以上のテストは省略
 
 });

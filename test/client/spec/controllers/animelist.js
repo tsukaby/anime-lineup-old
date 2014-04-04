@@ -6,17 +6,40 @@ describe('Controller: AnimeListCtrl', function () {
   beforeEach(module('animeLineupApp'));
 
   var AnimeListCtrl,
-    scope;
+    scope,
+    SeasonConstant;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, SeasonConstant) {
     scope = $rootScope.$new();
     AnimeListCtrl = $controller('AnimeListCtrl', {
-      $scope: scope
+      $scope: scope,
+      SeasonConstant: SeasonConstant
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    //expect(scope.awesomeThings.length).toBe(3);
+  it('AnimesValueが定義されていること', function () {
+    expect(scope.AnimesValue).toBeDefined();
+  });
+
+  it('NavigationServiceが定義されていること', function () {
+    expect(scope.NavigationService).toBeDefined();
+  });
+
+  beforeEach(inject(function ($controller, $rootScope, SeasonConstant, SeasonService) {
+    scope = $rootScope.$new();
+
+    spyOn(SeasonService, 'currentSeason').andReturn({year: 2010, season: 'winter'});
+
+    AnimeListCtrl = $controller('AnimeListCtrl', {
+      $scope: scope,
+      SeasonConstant: SeasonConstant,
+      SeasonService: SeasonService
+    });
+  }));
+
+  it('前・次ページのリンクが設定されていること', function () {
+    expect(scope.previousSeason).toBe('#/2009/autumn');
+    expect(scope.nextSeason).toBe('#/2010/spring');
   });
 });

@@ -11,8 +11,10 @@ describe('Service: AnimesValue', function () {
     AnimesValue = _AnimesValue_;
   }));
 
-  it('should do something', function () {
+  it('AnimesValueが定義されていること', function () {
     expect(!!AnimesValue).toBe(true);
   });
+
+  //AnimesValueはvalueレシピであり、値を格納用途のため、これ以上のテストは省略
 
 });
