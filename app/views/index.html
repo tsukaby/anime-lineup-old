@@ -19,11 +19,11 @@
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li ng-controller="AnimeSearchCtrl">
-              <form class="navbar-form navbar-right" style="width:300px" ng-submit="searchByTitle(SearchWordService.title)">
+              <form class="navbar-form navbar-right" style="width:300px" ng-submit="blurSearchBox(); searchByTitle(SearchWordService.title);">
                 <div class="input-group">
-                  <input type="text" placeholder="Title" class="form-control" ng-model="SearchWordService.title">
+                  <input id="search_box" type="text" placeholder="Title" class="form-control" ng-model="SearchWordService.title">
                   <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" ng-click="searchByTitle(SearchWordService.title)"><i class="glyphicon glyphicon-search"></i></button>
+                    <button class="btn btn-default" type="button" ng-click="blurSearchBox(); searchByTitle(SearchWordService.title);"><i class="glyphicon glyphicon-search"></i></button>
                   </span>
                 </div>
               </form>
