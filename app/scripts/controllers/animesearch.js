@@ -16,5 +16,5 @@ angular.module('animeLineupApp').controller('AnimeSearchCtrl', function($scope, 
   //Enterが押されたときなどにフォーカスを外すためのもの
   $scope.blurSearchBox = function() {
     angular.element('#search_box').blur();
-  }
+  };
 });

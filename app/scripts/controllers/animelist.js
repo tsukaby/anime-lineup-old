@@ -34,12 +34,6 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $h
     $scope.desc = !desc;
   };
 
-  $scope.sortPoint = function() {
-    var desc = !!$scope.desc;
-    $scope.animes = $filter('orderBy')($scope.animes, 'snsPoint', desc);
-    $scope.desc = !desc;
-  };
-
   // 画面先頭にスクロールする
   $scope.resetScroll = function() {
     var x = 0;
