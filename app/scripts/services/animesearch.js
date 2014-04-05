@@ -24,7 +24,6 @@ var Anime = {
   title: 'title',
   url: 'http://',
   thumbnailDelay: 0,
-  snsPoint: 0,
   getTitle: function() {
     return this.title;
   },
@@ -48,9 +47,6 @@ var Anime = {
   },
   getWikipediaURL: function() {
     return 'http://ja.wikipedia.org/wiki/' + this.getTitle();
-  },
-  getSnsPoint: function() {
-    return this.snsPoint;
   }
 };
 

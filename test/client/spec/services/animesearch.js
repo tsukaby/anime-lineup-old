@@ -18,7 +18,6 @@ describe('Service: AnimeSearchService', function () {
         title: 'anime1',
         url: 'http://example.com/anime1',
         thumbnailDelay: 0,
-        snsPoint: 0,
         season: 'spring',
         year: 2014
       }
