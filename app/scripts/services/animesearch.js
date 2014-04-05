@@ -32,7 +32,7 @@ var Anime = {
     return this.url;
   },
   getThumbnailURL: function() {
-    return 'http://capture.heartrails.com/200x200/delay=' + this.thumbnailDelay + '?' + this.url;
+    return 'http://capture.heartrails.com/400x400/delay=' + this.thumbnailDelay + '?' + this.url;
   },
   getThumbnailURL2: function(sizeX, sizeY) {
     return 'http://capture.heartrails.com/' + sizeX + 'x' + sizeY + '/delay=' + this.thumbnailDelay + '?' + this.url;
