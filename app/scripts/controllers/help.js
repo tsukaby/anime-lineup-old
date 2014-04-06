@@ -1,4 +1,4 @@
 'use strict';
 
-angular.module('animeLineupApp').controller('HelpCtrl', function ($scope) {
+angular.module('animeLineupApp').controller('HelpCtrl', function () {
 });
