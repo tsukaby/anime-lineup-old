@@ -25,8 +25,8 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $h
 
   var previous = SeasonService.previousSeason(SeasonConstant.year, SeasonConstant.season);
   var next = SeasonService.nextSeason(SeasonConstant.year, SeasonConstant.season);
-  $scope.previousSeason = '#/' + previous.year + '/' + previous.season;
-  $scope.nextSeason = '#/' + next.year + '/' + next.season;
+  $scope.previousSeason = '/' + previous.year + '/' + previous.season;
+  $scope.nextSeason = '/' + next.year + '/' + next.season;
 
   $scope.sortTitle = function() {
     var desc = !!$scope.desc;

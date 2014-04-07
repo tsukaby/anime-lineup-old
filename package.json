@@ -5,7 +5,10 @@
     "express": "~3.4.3",
     "lodash": "~2.4.1",
     "mongoose": "~3.8.8",
-    "ejs": "~0.8.4"
+    "ejs": "~0.8.4",
+    "connect-mongo": "^0.4.0",
+    "passport": "^0.2.0",
+    "passport-local": "~0.1.6"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

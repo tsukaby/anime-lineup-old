@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('animeLineupApp').controller('AnimeSearchCtrl', function($scope, AnimeSearchService, NavigationService) {
+angular.module('animeLineupApp').controller('AnimeSearchCtrl', function($scope, AnimeSearchService, NavigationService, Auth, $location) {
   //タイトルによるアニメ検索
   $scope.searchByTitle = function(title){
     if(title === undefined || title === null || title === ''){
@@ -16,5 +16,16 @@ angular.module('animeLineupApp').controller('AnimeSearchCtrl', function($scope, 
   //Enterが押されたときなどにフォーカスを外すためのもの
   $scope.blurSearchBox = function() {
     angular.element('#search_box').blur();
+  };
+
+  $scope.logout = function() {
+    Auth.logout()
+    .then(function() {
+      $location.path('/login');
+    });
+  };
+
+  $scope.isActive = function(route) {
+    return route === $location.path();
   };
 });
