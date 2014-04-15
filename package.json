@@ -8,7 +8,8 @@
     "ejs": "~0.8.4",
     "connect-mongo": "^0.4.0",
     "passport": "^0.2.0",
-    "passport-local": "~0.1.6"
+    "passport-local": "~0.1.6",
+    "passport-google-oauth": "^0.1.5"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
