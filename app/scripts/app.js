@@ -16,6 +16,9 @@ angular.module('animeLineupApp', [
   $routeProvider.when('/', {
     controller: 'AnimeListCtrl',
     templateUrl: 'partials/anime_list'
+  }).when('/_=_', {
+    // passportを使ったFacebook認証の場合#_=_にリダイレクトされてしまうため、以下のように正しいパスに誘導する
+    redirectTo: '/'
   }).when('/help', {
     controller: 'HelpCtrl',
     templateUrl: 'partials/help'
