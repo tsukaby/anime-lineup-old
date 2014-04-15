@@ -30,13 +30,7 @@
             </li>
             <li ng-class="{active: isActive(item.link)}"><a href="/help">Help</a></li>
             <li ng-class="{active: isActive(item.link)}"><a href="/season_calendar">Seasons</a></li>
-            <!--
-            <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Sign up</a></li>
-            -->
-            <li ng-class="{active: isActive(item.link)}"><a href="/settings">Settings</a></li>
             <li ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
-            <li ng-hide="currentUser" ng-class="{active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
             <li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
           </ul>
         </div>
@@ -91,8 +85,6 @@
     <script src="scripts/controllers/register_anime.js"></script>
     <script src="scripts/controllers/help.js"></script>
     <script src="scripts/controllers/login.js"></script>
-    <script src="scripts/controllers/signup.js"></script>
-    <script src="scripts/controllers/settings.js"></script>
     <script src="scripts/services/search_word_value.js"></script>
     <script src="scripts/services/season_factory.js"></script>
     <script src="scripts/services/anime_search_service.js"></script>
@@ -101,7 +93,6 @@
     <script src="scripts/services/navigation_service.js"></script>
     <script src="scripts/services/auth.js"></script>
     <script src="scripts/services/session.js"></script>
-    <script src="scripts/services/user.js"></script>
     <script src="scripts/filters/season_color.js"></script>
     <!-- endbuild -->
   </body>

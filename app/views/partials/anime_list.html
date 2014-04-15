@@ -1,4 +1,5 @@
 <nav class="container-fluid">
+  <span ng-show="currentUser">{{ currentUser.name }}</span>
   <div class="row">
     <ul class="pager">
       <li class="previous" ng-class={'disabled':!previousSeason}><a ng-href="{{previousSeason}}"><span class="glyphicon glyphicon-chevron-left"></span>Old</a></li>

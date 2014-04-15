@@ -13,8 +13,6 @@ angular.module('animeLineupApp', [
     'http://www.facebook.com/**'
   ]);
 
-  $locationProvider.html5Mode(true);
-
   $routeProvider.when('/', {
     controller: 'AnimeListCtrl',
     templateUrl: 'partials/anime_list'
@@ -24,13 +22,6 @@ angular.module('animeLineupApp', [
   }).when('/login', {
     controller: 'LoginCtrl',
     templateUrl: 'partials/login'
-  }).when('/signup', {
-    controller: 'SignupCtrl',
-    templateUrl: 'partials/signup'
-  }).when('/settings', {
-    templateUrl: 'partials/settings',
-    controller: 'SettingsCtrl',
-    authenticate: true
   }).when('/register_anime', {
     controller: 'RegisterAnimeCtrl',
     templateUrl: 'partials/register_anime'
@@ -45,8 +36,10 @@ angular.module('animeLineupApp', [
     templateUrl: 'partials/season_list'
   });
 
+  $locationProvider.html5Mode(true);
+
   // Intercept 401s and redirect you to login
-  $httpProvider.interceptors.push(['$q', '$location', function($q, $location) {
+  $httpProvider.interceptors.push(function($q, $location) {
     return {
       'responseError': function(response) {
         if(response.status === 401) {
@@ -58,7 +51,7 @@ angular.module('animeLineupApp', [
         }
       }
     };
-  }]);
+  });
 }).run(function($rootScope, $location, Auth) {
   // Redirect to login if route requires auth and you're not logged in
   $rootScope.$on('$routeChangeStart', function (event, next) {
