@@ -11,32 +11,7 @@
     <!-- endbuild -->
   </head>
   <body id="index_body" ng-app="animeLineupApp" ng-init="targetOfPartial = 'anime_list'">
-    <nav class="navbar navbar-static-top navbar-blue navbar-settings" ng-controller="AnimeSearchCtrl">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button class="navbar-toggle" type="button"></button>
-          <a class="navbar-brand" href="/" target="_self">アニメラインナップ</a>
-        </div>
-        <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <form class="navbar-form navbar-right" style="width:300px" ng-submit="blurSearchBox(); searchByTitle(SearchWordValue.title);">
-                <div class="input-group">
-                  <input id="search_box" type="text" placeholder="Title" class="form-control" ng-model="SearchWordValue.title">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button" ng-click="blurSearchBox(); searchByTitle(SearchWordValue.title);"><i class="glyphicon glyphicon-search"></i></button>
-                  </span>
-                </div>
-              </form>
-            </li>
-            <li ng-class="{active: isActive(item.link)}"><a href="/help">Help</a></li>
-            <li ng-class="{active: isActive(item.link)}"><a href="/season_calendar">Seasons</a></li>
-            <li ng-hide="currentUser" ng-class="{active: isActive('/login')}"><a href="/login">Login</a></li>
-            <li ng-show="currentUser" ng-class="{active: isActive('/logout')}"><a href="" ng-click="logout()">Logout</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+
     <div ng-view></div>
     <footer>
       <hr>
