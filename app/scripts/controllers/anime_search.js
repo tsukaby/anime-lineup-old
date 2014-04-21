@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('animeLineupApp').controller('AnimeSearchCtrl', function($scope, AnimeSearchService, NavigationService, Auth, $location) {
+angular.module('animeLineupApp').controller('AnimeSearchCtrl', function($scope, $rootScope, AnimeSearchService, NavigationService, Auth, $location) {
   //タイトルによるアニメ検索
   $scope.searchByTitle = function(title){
     if(title === undefined || title === null || title === ''){
@@ -19,6 +19,8 @@ angular.module('animeLineupApp').controller('AnimeSearchCtrl', function($scope, 
   };
 
   $scope.logout = function() {
+    $rootScope.viewingHistories = null;
+
     Auth.logout()
     .then(function() {
       $location.path('/');
