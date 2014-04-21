@@ -53,7 +53,7 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $r
   $scope.open = function(anime) {
 
     var modalInstance = $modal.open({
-      templateUrl: 'partials/anime_detail.html',
+      templateUrl: '/partials/anime_detail.html',
       controller: 'ModalInstanceCtrl',
       resolve: {
         anime: function() {

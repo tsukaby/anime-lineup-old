@@ -15,28 +15,28 @@ angular.module('animeLineupApp', [
 
   $routeProvider.when('/', {
     controller: 'AnimeListCtrl',
-    templateUrl: 'partials/anime_list'
+    templateUrl: '/partials/anime_list'
   }).when('/_=_', {
     // passportを使ったFacebook認証の場合#_=_にリダイレクトされてしまうため、以下のように正しいパスに誘導する
     redirectTo: '/'
   }).when('/help', {
     controller: 'HelpCtrl',
-    templateUrl: 'partials/help'
+    templateUrl: '/partials/help'
   }).when('/login', {
     controller: 'LoginCtrl',
-    templateUrl: 'partials/login'
+    templateUrl: '/partials/login'
   }).when('/register_anime', {
     controller: 'RegisterAnimeCtrl',
-    templateUrl: 'partials/register_anime'
+    templateUrl: '/partials/register_anime'
   }).when('/register_anime/:year/:season/:success', {
     controller: 'RegisterAnimeCtrl',
-    templateUrl: 'partials/register_anime'
+    templateUrl: '/partials/register_anime'
   }).when('/:year/:season', {
     controller: 'AnimeListCtrl',
-    templateUrl: 'partials/anime_list'
+    templateUrl: '/partials/anime_list'
   }).when('/season_calendar', {
     controller: 'SeasonCtrl',
-    templateUrl: 'partials/season_list'
+    templateUrl: '/partials/season_list'
   });
 
   $locationProvider.html5Mode(true);
