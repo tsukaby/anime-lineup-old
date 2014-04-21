@@ -6,7 +6,7 @@
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li>
+        <li ng-show="isVisibleSearchBox">
           <form class="navbar-form navbar-right" style="width:300px"
                 ng-submit="blurSearchBox(); searchByTitle(SearchWordValue.title);">
             <div class="input-group">

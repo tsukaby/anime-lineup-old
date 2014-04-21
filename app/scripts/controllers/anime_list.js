@@ -3,6 +3,8 @@
 angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $rootScope, $http, $routeParams, SeasonService, $filter, $modal, AnimesValue, AnimeSearchService, SeasonConstant, NavigationService, scroller) {
   $scope.AnimesValue = AnimesValue;
 
+  $scope.isVisibleSearchBox = true;
+
   // 現在のシーズンを設定
   // TODO:不正なパラメータのエラー処理
   if ($routeParams.year === undefined || $routeParams.season === undefined) {
