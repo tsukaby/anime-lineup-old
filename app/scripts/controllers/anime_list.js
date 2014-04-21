@@ -101,14 +101,14 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $r
     }
 
     //視聴状況の変更
-    $http.post('/api/viewing_history', {userId: $scope.currentUser.userId, year: anime.year, season: anime.season, title: anime.title, status: mode}).success(function(data){
+    $http.post('/api/viewing_histories', {userId: $scope.currentUser.userId, year: anime.year, season: anime.season, title: anime.title, status: mode}).success(function (data) {
       console.log(data);
     });
   };
 
   if($scope.currentUser){
     // ログイン済みの場合のみ処理
-    $http.get('/api/viewing_history/' + $scope.currentUser.userId + '/' + SeasonConstant.year + '/' + SeasonConstant.season).success(function(data){
+    $http.get('/api/viewing_histories/' + $scope.currentUser.userId + '/' + SeasonConstant.year + '/' + SeasonConstant.season).success(function (data) {
       var panelStyles = [];
       var viewingStatuses = [];
       var viewingHistories = [];
