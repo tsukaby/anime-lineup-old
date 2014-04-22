@@ -84,3 +84,50 @@ ul {
 .navbar-settings {
   margin-bottom: 0px;
 }
+
+.btn-gray {
+  @extend .btn-success;
+  background-color: #404040;
+  border-color: #303030;
+  color: #FFFFFF;
+}
+
+.btn-gray:hover {
+  @extend .btn-success:hover;
+  background-color: #303030;
+  border-color: #202020;
+  color: #FFFFFF;
+}
+
+.btn-gray.active {
+  @extend .btn-success:hover;
+  background-color: #303030;
+  border-color: #202020;
+  color: #FFFFFF;
+}
+
+.panel-green {
+  @extend .panel-primary;
+  border-color: #5CB85C;
+
+  & > .panel-heading {
+    background-color: #5CB85C;
+    border-color: #5CB85C;
+    color: #FFFFFF;
+  }
+}
+
+.panel-gray {
+  @extend .panel-primary;
+  border-color: #404040;
+
+  & > .panel-heading {
+    background-color: #404040;
+    border-color: #404040;
+    color: #FFFFFF;
+  }
+}
+
+.panel-blue {
+  @extend .panel-primary;
+}

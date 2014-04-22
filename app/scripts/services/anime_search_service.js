@@ -57,7 +57,7 @@ angular.module('animeLineupApp').service('AnimeSearchService', function($http, A
     }
 
     //すべてのアニメの一覧からタイトルで検索
-    $http.get('api/animes/' + title, {cache: true}).success(function(data) {
+    $http.get('/api/animes/' + title, {cache: true}).success(function(data) {
       var animes = [];
       for (var i = 0; i < data.length; i++) {
         //オブジェクト作成
@@ -75,7 +75,7 @@ angular.module('animeLineupApp').service('AnimeSearchService', function($http, A
     }
 
     //すべてのアニメからシーズンで検索
-    $http.get('api/animes/' + year + '/' + season, {cache: true}).success(function(data) {
+    $http.get('/api/animes/' + year + '/' + season, {cache: true}).success(function(data) {
       var animes = [];
       for (var i = 0; i < data.length; i++) {
         //オブジェクト作成

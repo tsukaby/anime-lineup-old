@@ -1,7 +1,9 @@
 'use strict';
 
-angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $http, $routeParams, SeasonService, $filter, $modal, AnimesValue, AnimeSearchService, SeasonConstant, NavigationService, scroller) {
+angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $rootScope, $http, $routeParams, SeasonService, $filter, $modal, AnimesValue, AnimeSearchService, SeasonConstant, NavigationService, scroller) {
   $scope.AnimesValue = AnimesValue;
+
+  $scope.isVisibleSearchBox = true;
 
   // 現在のシーズンを設定
   // TODO:不正なパラメータのエラー処理
@@ -25,8 +27,8 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $h
 
   var previous = SeasonService.previousSeason(SeasonConstant.year, SeasonConstant.season);
   var next = SeasonService.nextSeason(SeasonConstant.year, SeasonConstant.season);
-  $scope.previousSeason = '#/' + previous.year + '/' + previous.season;
-  $scope.nextSeason = '#/' + next.year + '/' + next.season;
+  $scope.previousSeason = '/' + previous.year + '/' + previous.season;
+  $scope.nextSeason = '/' + next.year + '/' + next.season;
 
   $scope.sortTitle = function() {
     var desc = !!$scope.desc;
@@ -53,7 +55,7 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $h
   $scope.open = function(anime) {
 
     var modalInstance = $modal.open({
-      templateUrl: 'partials/anime_detail.html',
+      templateUrl: '/partials/anime_detail.html',
       controller: 'ModalInstanceCtrl',
       resolve: {
         anime: function() {
@@ -66,4 +68,90 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function($scope, $h
     }, function() {
     });
   };
+
+  $scope.view = function(anime, mode){
+    //パネルのスタイル変更
+    if(mode === 0){
+      $rootScope.viewingHistories[anime.getTitle()] = {
+          panelStyle: 'panel-gray',
+          viewStatus: {
+            done: 'active',
+            none: '',
+            now: ''
+          }
+        };
+    }else if(mode === 1){
+      $rootScope.viewingHistories[anime.getTitle()] = {
+          panelStyle: 'panel-blue',
+          viewStatus: {
+            done: '',
+            none: 'active',
+            now: ''
+          }
+        };
+    }else if(mode === 2){
+      $rootScope.viewingHistories[anime.getTitle()] = {
+          panelStyle: 'panel-green',
+          viewStatus: {
+            done: '',
+            none: '',
+            now: 'active'
+          }
+        };
+    }
+
+    //視聴状況の変更
+    $http.post('/api/viewing_histories', {userId: $scope.currentUser.userId, year: anime.year, season: anime.season, title: anime.title, status: mode}).success(function (data) {
+      console.log(data);
+    });
+  };
+
+  if($scope.currentUser){
+    // ログイン済みの場合のみ処理
+    $http.get('/api/viewing_histories/' + $scope.currentUser.userId + '/' + SeasonConstant.year + '/' + SeasonConstant.season).success(function (data) {
+      var panelStyles = [];
+      var viewingStatuses = [];
+      var viewingHistories = [];
+
+      for(var i=0; i<data.length; i++){
+        if(data[i].status === 0){
+          viewingHistories[data[i].title] = {
+            panelStyle: 'panel-gray',
+            viewStatus: {
+              done: 'active',
+              none: '',
+              now: ''
+            }
+          };
+
+        }else if(data[i].status === 1){
+          viewingHistories[data[i].title] = {
+            panelStyle: 'panel-blue',
+            viewStatus: {
+              done: '',
+              none: 'active',
+              now: ''
+            }
+          };
+
+
+        }else if(data[i].status === 2){
+          viewingHistories[data[i].title] = {
+            panelStyle: 'panel-green',
+            viewStatus: {
+              done: '',
+              none: '',
+              now: 'active'
+            }
+          };
+
+
+        }
+      }
+
+      $rootScope.viewingHistories = viewingHistories;
+    });
+
+  }
+
 });

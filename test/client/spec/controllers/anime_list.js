@@ -38,7 +38,7 @@ describe('Controller: AnimeListCtrl', function () {
   }));
 
   it('前・次ページのリンクが設定されていること', function () {
-    expect(scope.previousSeason).toBe('#/2009/autumn');
-    expect(scope.nextSeason).toBe('#/2010/spring');
+    expect(scope.previousSeason).toBe('/2009/autumn');
+    expect(scope.nextSeason).toBe('/2010/spring');
   });
 });
