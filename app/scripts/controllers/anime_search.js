@@ -3,7 +3,7 @@
 angular.module('animeLineupApp').controller('AnimeSearchCtrl', function($scope, $rootScope, AnimeSearchService, NavigationService, Auth, $location) {
   //タイトルによるアニメ検索
   $scope.searchByTitle = function(title){
-    if(title === undefined || title === null || title === ''){
+    if (!title) {
       AnimeSearchService.searchByDefault();
       NavigationService.seasonMode();
       return;

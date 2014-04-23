@@ -38,7 +38,7 @@ angular.module('animeLineupApp').factory('SeasonService', function($http) {
     },
     //引数から次のシーズンを求める関数
     nextSeason: function(year, season) {
-      if(year === null || year === undefined || year === '' || isNaN(year)){
+      if (!year || isNaN(year)) {
         // 数値でない場合
         return undefined;
       }
@@ -71,7 +71,7 @@ angular.module('animeLineupApp').factory('SeasonService', function($http) {
     },
     //引数から前のシーズンを求める関数
     previousSeason: function(year, season) {
-      if(year === null || year === undefined || year === '' || isNaN(year)){
+      if (!year || isNaN(year)) {
         // 数値でない場合
         return undefined;
       }

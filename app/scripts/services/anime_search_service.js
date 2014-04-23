@@ -52,7 +52,7 @@ var Anime = {
 
 angular.module('animeLineupApp').service('AnimeSearchService', function ($http, $rootScope) {
   this.searchByTitle = function(title) {
-    if(title === undefined){
+    if (!title) {
       return;
     }
 
@@ -70,7 +70,7 @@ angular.module('animeLineupApp').service('AnimeSearchService', function ($http, 
   };
 
   this.searchBySeason = function(year, season) {
-    if(year === undefined || season === undefined){
+    if (!year || !season) {
       return;
     }
 

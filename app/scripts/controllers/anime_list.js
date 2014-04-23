@@ -5,7 +5,7 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
 
   // 現在のシーズンを設定
   // TODO:不正なパラメータのエラー処理
-  if ($routeParams.year === undefined || $routeParams.season === undefined) {
+  if (!$routeParams.year || !$routeParams.season) {
     //パラメタなしアクセスの場合は現在日付から現在シーズンを求める
     var current = SeasonService.currentSeason();
     $rootScope.season.year = current.year;
