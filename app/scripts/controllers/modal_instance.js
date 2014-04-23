@@ -1,10 +1,10 @@
 'use strict';
 
-angular.module('animeLineupApp').controller('ModalInstanceCtrl', function($scope, $modalInstance, anime) {
+angular.module('animeLineupApp').controller('ModalInstanceCtrl', function ($scope, $modalInstance, anime) {
 
   $scope.anime = anime;
 
-  $scope.close = function() {
+  $scope.close = function () {
     $modalInstance.close();
   };
 });

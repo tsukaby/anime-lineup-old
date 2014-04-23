@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('animeLineupApp').controller('AnimeSearchCtrl', function($scope, $rootScope, AnimeSearchService, NavigationService, Auth, $location) {
+angular.module('animeLineupApp').controller('AnimeSearchCtrl', function ($scope, $rootScope, AnimeSearchService, NavigationService, Auth, $location) {
   //タイトルによるアニメ検索
-  $scope.searchByTitle = function(title){
+  $scope.searchByTitle = function (title) {
     if (!title) {
       AnimeSearchService.searchByDefault();
       NavigationService.seasonMode();
@@ -14,20 +14,19 @@ angular.module('animeLineupApp').controller('AnimeSearchCtrl', function($scope, 
   };
 
   //Enterが押されたときなどにフォーカスを外すためのもの
-  $scope.blurSearchBox = function() {
+  $scope.blurSearchBox = function () {
     angular.element('#search_box').blur();
   };
 
-  $scope.logout = function() {
+  $scope.logout = function () {
     $rootScope.viewingHistories = null;
 
-    Auth.logout()
-    .then(function() {
+    Auth.logout().then(function () {
       $location.path('/');
     });
   };
 
-  $scope.isActive = function(route) {
+  $scope.isActive = function (route) {
     return route === $location.path();
   };
 });

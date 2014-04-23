@@ -4,14 +4,14 @@ var should = require('should');
 var app = require('../../../server');
 var request = require('supertest');
 
-describe('GET /api/seasons 登録されている全シーズンを取得', function() {
-  
-  it('JSON配列が取得できること', function(done) {
+describe('GET /api/seasons 登録されている全シーズンを取得', function () {
+
+  it('JSON配列が取得できること', function (done) {
     request(app)
       .get('/api/seasons')
       .expect(200)
       .expect('Content-Type', /json/)
-      .end(function(err, res) {
+      .end(function (err, res) {
         if (err) {
           return done(err);
         }
@@ -20,10 +20,10 @@ describe('GET /api/seasons 登録されている全シーズンを取得', funct
       });
   });
 
-  it('JSONが1件以上取得できること', function(done) {
+  it('JSONが1件以上取得できること', function (done) {
     request(app)
       .get('/api/seasons')
-      .end(function(err, res) {
+      .end(function (err, res) {
         if (err) {
           return done(err);
         }

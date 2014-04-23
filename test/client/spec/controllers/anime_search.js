@@ -20,7 +20,7 @@ describe('Controller: AnimeSearchCtrl', function () {
     spyOn(AnimeSearchService, 'searchByDefault');
     spyOn(NavigationService, 'seasonMode');
     spyOn(NavigationService, 'searchMode');
-    
+
     AnimeSearchCtrl = $controller('AnimeSearchCtrl', {
       $scope: scope
     });
