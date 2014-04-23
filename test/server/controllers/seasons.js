@@ -1,8 +1,8 @@
 'use strict';
 
-var should = require('should'),
-    app = require('../../../server'),
-    request = require('supertest');
+var should = require('should');
+var app = require('../../../server');
+var request = require('supertest');
 
 describe('GET /api/seasons 登録されている全シーズンを取得', function() {
   

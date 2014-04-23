@@ -34,6 +34,6 @@ angular.module('animeLineupApp').factory('Auth', function ($location, $rootScope
     isLoggedIn: function() {
       var user = $rootScope.currentUser;
       return !!user;
-    },
+    }
   };
 });

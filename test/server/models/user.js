@@ -1,12 +1,11 @@
 'use strict';
 
-var should = require('should'),
-    mongoose = require('mongoose'),
-    User = mongoose.model('User');
-
-var user;
+var should = require('should');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
 
 describe('User Model', function() {
+  var user;
   before(function(done) {
     user = new User({
     });
