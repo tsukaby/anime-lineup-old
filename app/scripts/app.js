@@ -42,7 +42,7 @@ angular.module('animeLineupApp', [
   $locationProvider.html5Mode(true);
 
   // Intercept 401s and redirect you to login
-  $httpProvider.interceptors.push(function ($q, $location) {
+  $httpProvider.interceptors.push(['$q', '$location', function ($q, $location) {
     return {
       'responseError': function (response) {
         if (response.status === 401) {
@@ -54,7 +54,7 @@ angular.module('animeLineupApp', [
         }
       }
     };
-  });
+  }]);
 }).run(function ($rootScope, $location, Auth) {
   $rootScope.season = {};
 
