@@ -50,7 +50,7 @@ var Anime = {
   }
 };
 
-angular.module('animeLineupApp').service('AnimeSearchService', function($http, AnimesValue, SeasonConstant) {
+angular.module('animeLineupApp').service('AnimeSearchService', function ($http, $rootScope) {
   this.searchByTitle = function(title) {
     if(title === undefined){
       return;
@@ -64,8 +64,8 @@ angular.module('animeLineupApp').service('AnimeSearchService', function($http, A
         var obj = object(Anime, data[i]);
         animes.push(obj);
       }
-      
-      AnimesValue.animes = animes;
+
+      $rootScope.animes = animes;
     });
   };
 
@@ -82,14 +82,14 @@ angular.module('animeLineupApp').service('AnimeSearchService', function($http, A
         var obj = object(Anime, data[i]);
         animes.push(obj);
       }
-      
-      AnimesValue.animes = animes;
+
+      $rootScope.animes = animes;
     });
   };
 
   this.searchByDefault = function() {
-    var year = SeasonConstant.year;
-    var season = SeasonConstant.season;
+    var year = $rootScope.season.year;
+    var season = $rootScope.season.season;
 
     this.searchBySeason(year, season);
   };

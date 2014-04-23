@@ -1,8 +1,6 @@
 'use strict';
 
-angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $rootScope, $http, $routeParams, SeasonService, $filter, $modal, AnimesValue, AnimeSearchService, SeasonConstant, NavigationService, scroller) {
-  $scope.AnimesValue = AnimesValue;
-
+angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $rootScope, $http, $routeParams, SeasonService, $filter, $modal, AnimeSearchService, NavigationService, scroller) {
   $scope.isVisibleSearchBox = true;
 
   // 現在のシーズンを設定
@@ -10,14 +8,14 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
   if ($routeParams.year === undefined || $routeParams.season === undefined) {
     //パラメタなしアクセスの場合は現在日付から現在シーズンを求める
     var current = SeasonService.currentSeason();
-    SeasonConstant.year = current.year;
-    SeasonConstant.season = current.season;
+    $rootScope.season.year = current.year;
+    $rootScope.season.season = current.season;
   } else {
-    SeasonConstant.year = $routeParams.year;
-    SeasonConstant.season = $routeParams.season;
+    $rootScope.season.year = $routeParams.year;
+    $rootScope.season.season = $routeParams.season;
   }
 
-  AnimeSearchService.searchBySeason(SeasonConstant.year, SeasonConstant.season);
+  AnimeSearchService.searchBySeason($rootScope.season.year, $rootScope.season.season);
 
   //現在のシーズンを設定
   $scope.NavigationService = NavigationService;
@@ -25,8 +23,8 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
 
   //前と次のシーズンのリンクを設定
 
-  var previous = SeasonService.previousSeason(SeasonConstant.year, SeasonConstant.season);
-  var next = SeasonService.nextSeason(SeasonConstant.year, SeasonConstant.season);
+  var previous = SeasonService.previousSeason($rootScope.season.year, $rootScope.season.season);
+  var next = SeasonService.nextSeason($rootScope.season.year, $rootScope.season.season);
   $scope.previousSeason = '/' + previous.year + '/' + previous.season;
   $scope.nextSeason = '/' + next.year + '/' + next.season;
 
@@ -108,7 +106,7 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
 
   if ($scope.currentUser) {
     // ログイン済みの場合のみ処理
-    $http.get('/api/viewing_histories/' + $scope.currentUser.userId + '/' + SeasonConstant.year + '/' + SeasonConstant.season).success(function (data) {
+    $http.get('/api/viewing_histories/' + $scope.currentUser.userId + '/' + $rootScope.season.year + '/' + $rootScope.season.season).success(function (data) {
       var viewingHistories = [];
 
       for (var i = 0; i < data.length; i++) {
