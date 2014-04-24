@@ -1,13 +1,12 @@
 'use strict';
 
-var should = require('should'),
-    mongoose = require('mongoose'),
-    User = mongoose.model('User');
+var should = require('should');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
 
-var user;
-
-describe('User Model', function() {
-  before(function(done) {
+describe('User Model', function () {
+  var user;
+  before(function (done) {
     user = new User({
     });
 
@@ -16,13 +15,13 @@ describe('User Model', function() {
     done();
   });
 
-  afterEach(function(done) {
+  afterEach(function (done) {
     User.remove().exec();
     done();
   });
 
-  it('should begin with no users', function(done) {
-    User.find({}, function(err, users) {
+  it('should begin with no users', function (done) {
+    User.find({}, function (err, users) {
       users.should.have.length(0);
       done();
     });

@@ -8,10 +8,8 @@ describe('Service: AnimeSearchService', function () {
   // instantiate service
   var $httpBackend;
   var AnimeSearchService;
-  var AnimesValue;
-  var SeasonConstant;
 
-  beforeEach(inject(function (_$httpBackend_, _AnimeSearchService_, _AnimesValue_, _SeasonConstant_) {
+  beforeEach(inject(function (_$httpBackend_, _AnimeSearchService_) {
     $httpBackend = _$httpBackend_;
     $httpBackend.expectGET('api/animes/2014/spring').respond([
       {
@@ -31,8 +29,6 @@ describe('Service: AnimeSearchService', function () {
       }
     ]);
     AnimeSearchService = _AnimeSearchService_;
-    AnimesValue = _AnimesValue_;
-    SeasonConstant = _SeasonConstant_;
   }));
 
   it('AnimeSearchServiceが定義されていること', function () {

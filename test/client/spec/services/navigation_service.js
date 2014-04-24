@@ -7,11 +7,11 @@ describe('Service: NavigationService', function () {
 
   // instantiate service
   var NavigationService;
-  var SeasonConstant;
+  var scope;
 
-  beforeEach(inject(function (_NavigationService_, _SeasonConstant_) {
+  beforeEach(inject(function ($rootScope, _NavigationService_) {
+    scope = $rootScope;
     NavigationService = _NavigationService_;
-    SeasonConstant = _SeasonConstant_;
   }));
 
   it('searchModeによって、タイトルが設定されること', function () {
@@ -20,23 +20,23 @@ describe('Service: NavigationService', function () {
   });
 
   it('seasonModeによって、タイトルが設定されること', function () {
-    SeasonConstant.year = 2010;
-    SeasonConstant.season = 'winter';
+    scope.season.year = 2010;
+    scope.season.season = 'winter';
     NavigationService.seasonMode();
     expect(NavigationService.title).toEqual('シーズン：2010年 冬');
 
-    SeasonConstant.year = 2010;
-    SeasonConstant.season = 'spring';
+    scope.season.year = 2010;
+    scope.season.season = 'spring';
     NavigationService.seasonMode();
     expect(NavigationService.title).toEqual('シーズン：2010年 春');
 
-    SeasonConstant.year = 2010;
-    SeasonConstant.season = 'summer';
+    scope.season.year = 2010;
+    scope.season.season = 'summer';
     NavigationService.seasonMode();
     expect(NavigationService.title).toEqual('シーズン：2010年 夏');
 
-    SeasonConstant.year = 2010;
-    SeasonConstant.season = 'autumn';
+    scope.season.year = 2010;
+    scope.season.season = 'autumn';
     NavigationService.seasonMode();
     expect(NavigationService.title).toEqual('シーズン：2010年 秋');
   });

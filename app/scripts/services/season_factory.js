@@ -10,14 +10,14 @@ var SeasonEnum = {
 
 
 // シーズンに関する機能を提供するユーティリティ
-angular.module('animeLineupApp').factory('SeasonService', function($http) {
+angular.module('animeLineupApp').factory('SeasonService', function ($http) {
   var seasons = [];
-  $http.get('/api/seasons', {cache: true}).success(function(data) {
+  $http.get('/api/seasons', {cache: true}).success(function (data) {
     seasons = data;
   });
   return {
     // 現在日時から現在のシーズンを求める関数
-    currentSeason: function() {
+    currentSeason: function () {
       var now = new Date();
       var year = now.getFullYear();
       var season;
@@ -37,8 +37,8 @@ angular.module('animeLineupApp').factory('SeasonService', function($http) {
       };
     },
     //引数から次のシーズンを求める関数
-    nextSeason: function(year, season) {
-      if(year === null || year === undefined || year === '' || isNaN(year)){
+    nextSeason: function (year, season) {
+      if (!year || isNaN(year)) {
         // 数値でない場合
         return undefined;
       }
@@ -70,8 +70,8 @@ angular.module('animeLineupApp').factory('SeasonService', function($http) {
       }
     },
     //引数から前のシーズンを求める関数
-    previousSeason: function(year, season) {
-      if(year === null || year === undefined || year === '' || isNaN(year)){
+    previousSeason: function (year, season) {
+      if (!year || isNaN(year)) {
         // 数値でない場合
         return undefined;
       }
@@ -103,17 +103,17 @@ angular.module('animeLineupApp').factory('SeasonService', function($http) {
       }
     },
     //季節名を日本語に変える関数
-    toJapaneseForSeason: function(season) {
+    toJapaneseForSeason: function (season) {
       var seasons = {'spring': '春', 'summer': '夏', 'autumn': '秋', 'winter': '冬'};
       return seasons[season];
     },
     // 選択可能なシーズンの一覧
-    getSeasons: function() {
+    getSeasons: function () {
       return seasons;
     },
     // 選択可能なシーズンの一覧に引数で指定したシーズンが含まれているかを調べる
     // true: 含まれている
-    hasSeasons: function(season) {
+    hasSeasons: function (season) {
       for (var i = 0; i < seasons.length; i++) {
         if ((String(seasons[i].year) === String(season.year)) && (seasons[i].season === season.season)) {
           return true;

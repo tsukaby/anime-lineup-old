@@ -5,9 +5,9 @@ describe('Controller: RegisterAnimeCtrl', function () {
   // load the controller's module
   beforeEach(module('animeLineupApp'));
 
-  var RegisterAnimeCtrl,
-    scope,
-    routeParams;
+  var RegisterAnimeCtrl;
+  var scope;
+  var routeParams;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope, $routeParams) {

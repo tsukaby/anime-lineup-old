@@ -8,13 +8,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li ng-show="isVisibleSearchBox">
           <form class="navbar-form navbar-right" style="width:300px"
-                ng-submit="blurSearchBox(); searchByTitle(SearchWordValue.title);">
+            ng-submit="blurSearchBox(); searchByTitle(searchWord);">
             <div class="input-group">
               <input id="search_box" type="text" placeholder="Title" class="form-control"
-                     ng-model="SearchWordValue.title">
+                ng-model="searchWord">
                   <span class="input-group-btn">
                     <button class="btn btn-default" type="button"
-                            ng-click="blurSearchBox(); searchByTitle(SearchWordValue.title);"><i
+                      ng-click="blurSearchBox(); searchByTitle(searchWord);"><i
                       class="glyphicon glyphicon-search"></i></button>
                   </span>
             </div>

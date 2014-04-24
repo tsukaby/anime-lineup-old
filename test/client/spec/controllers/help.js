@@ -5,8 +5,8 @@ describe('Controller: HelpCtrl', function () {
   // load the controller's module
   beforeEach(module('animeLineupApp'));
 
-  var HelpCtrl,
-    scope;
+  var HelpCtrl;
+  var scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
