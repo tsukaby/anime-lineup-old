@@ -19,7 +19,9 @@ angular.module('animeLineupApp').controller('AnimeSearchCtrl', function ($scope,
   };
 
   $scope.logout = function () {
-    $rootScope.viewingHistories = null;
+    for (var i = 0; i < $rootScope.animes.length; i++) {
+      delete $rootScope.animes[i].status;
+    }
 
     Auth.logout().then(function () {
       $location.path('/');
