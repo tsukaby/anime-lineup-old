@@ -34,8 +34,12 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
 
   $scope.sortTitle = function () {
     var desc = !!$scope.desc;
-    $scope.animes = $filter('orderBy')($scope.animes, 'title', desc);
+    $rootScope.animes = $filter('orderBy')($rootScope.animes, 'title', desc);
     $scope.desc = !desc;
+  };
+
+  $scope.sortViewingHistories = function () {
+    $rootScope.animes = $filter('viewingSortFilter')($rootScope.animes);
   };
 
   // 画面先頭にスクロールする
@@ -73,34 +77,7 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
 
   $scope.view = function (anime, mode) {
     //パネルのスタイル変更
-    if (mode === 0) {
-      $rootScope.viewingHistories[anime.getTitle()] = {
-        panelStyle: 'panel-gray',
-        viewStatus: {
-          done: 'active',
-          none: '',
-          now: ''
-        }
-      };
-    } else if (mode === 1) {
-      $rootScope.viewingHistories[anime.getTitle()] = {
-        panelStyle: 'panel-blue',
-        viewStatus: {
-          done: '',
-          none: 'active',
-          now: ''
-        }
-      };
-    } else if (mode === 2) {
-      $rootScope.viewingHistories[anime.getTitle()] = {
-        panelStyle: 'panel-green',
-        viewStatus: {
-          done: '',
-          none: '',
-          now: 'active'
-        }
-      };
-    }
+    anime.status = mode;
 
     //視聴状況の変更
     $http.post('/api/viewing_histories', {userId: $scope.currentUser.userId, year: anime.year, season: anime.season, title: anime.title, status: mode}).success(function (data) {
@@ -111,45 +88,15 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
   if ($scope.currentUser) {
     // ログイン済みの場合のみ処理
     $http.get('/api/viewing_histories/' + $scope.currentUser.userId + '/' + $rootScope.season.year + '/' + $rootScope.season.season).success(function (data) {
-      var viewingHistories = [];
-
-      for (var i = 0; i < data.length; i++) {
-        if (data[i].status === 0) {
-          viewingHistories[data[i].title] = {
-            panelStyle: 'panel-gray',
-            viewStatus: {
-              done: 'active',
-              none: '',
-              now: ''
-            }
-          };
-
-        } else if (data[i].status === 1) {
-          viewingHistories[data[i].title] = {
-            panelStyle: 'panel-blue',
-            viewStatus: {
-              done: '',
-              none: 'active',
-              now: ''
-            }
-          };
-
-
-        } else if (data[i].status === 2) {
-          viewingHistories[data[i].title] = {
-            panelStyle: 'panel-green',
-            viewStatus: {
-              done: '',
-              none: '',
-              now: 'active'
-            }
-          };
-
-
+      for (var i = 0; i < $rootScope.animes.length; i++) {
+        $rootScope.animes[i].status = 1;
+        for (var j = 0; j < data.length; j++) {
+          if (data[j].title === $rootScope.animes[i].title) {
+            $rootScope.animes[i].status = data[j].status;
+            break;
+          }
         }
       }
-
-      $rootScope.viewingHistories = viewingHistories;
     });
 
   }
