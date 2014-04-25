@@ -15,7 +15,11 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
     $rootScope.season.season = $routeParams.season;
   }
 
-  AnimeSearchService.searchBySeason($rootScope.season.year, $rootScope.season.season);
+  //isLoadedによってローディング画像の表示を切り替える
+  $scope.isLoaded = false;
+  AnimeSearchService.searchBySeason($rootScope.season.year, $rootScope.season.season, function () {
+    $scope.isLoaded = true;
+  });
 
   //現在のシーズンを設定
   $scope.NavigationService = NavigationService;

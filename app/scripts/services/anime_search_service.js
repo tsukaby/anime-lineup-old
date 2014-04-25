@@ -69,7 +69,7 @@ angular.module('animeLineupApp').service('AnimeSearchService', function ($http, 
     });
   };
 
-  this.searchBySeason = function (year, season) {
+  this.searchBySeason = function (year, season, callback) {
     if (!year || !season) {
       return;
     }
@@ -84,13 +84,14 @@ angular.module('animeLineupApp').service('AnimeSearchService', function ($http, 
       }
 
       $rootScope.animes = animes;
+      callback();
     });
   };
 
-  this.searchByDefault = function () {
+  this.searchByDefault = function (callback) {
     var year = $rootScope.season.year;
     var season = $rootScope.season.season;
 
-    this.searchBySeason(year, season);
+    this.searchBySeason(year, season, callback);
   };
 });
