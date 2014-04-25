@@ -25,7 +25,10 @@
       </ul>
     </div>
   </div>
-  <ul id="anime_list" class="row">
+  <div ng-hide="isLoaded">
+    <div ng-include="'/partials/loading.html'"></div>
+  </div>
+  <ul id="anime_list" class="row" ng-show="isLoaded">
     <li class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="anime in animes | filter:filter">
       <div class="panel panel-primary" ng-class="viewingHistories[anime.getTitle()].panelStyle">
         <div class="panel-heading" style="height:55px;">
@@ -39,8 +42,7 @@
         <!-- 視聴状況選択 -->
         <div class="panel-footer" ng-show="currentUser">
           <div class="btn-group" data-toggle="buttons" style="width:100%">
-            <label class="btn btn-gray" style="width:33%" ng-class="viewingHistories[anime.getTitle()].viewStatus.done"
-              ng-click="view(anime, 0)">
+            <label class="btn btn-gray" style="width:33%" ng-class="viewingHistories[anime.getTitle()].viewStatus.done" ng-click="view(anime, 0)">
               <input type="radio" name="options">切った
             </label>
             <label class="btn btn-default" style="width:33%"
