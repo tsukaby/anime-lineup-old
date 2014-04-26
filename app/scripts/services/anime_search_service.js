@@ -57,16 +57,29 @@ angular.module('animeLineupApp').service('AnimeSearchService', function ($http, 
     }
 
     //すべてのアニメの一覧からタイトルで検索
-    $http.get('/api/animes/' + title, {cache: true}).success(function (data) {
-      var animes = [];
-      for (var i = 0; i < data.length; i++) {
-        //オブジェクト作成
-        var obj = object(Anime, data[i]);
-        animes.push(obj);
-      }
+    if (!$rootScope.currentUser) {
+      $http.get('/api/animes/' + title, {cache: true}).success(function (data) {
+        var animes = [];
+        for (var i = 0; i < data.length; i++) {
+          //オブジェクト作成
+          var obj = object(Anime, data[i]);
+          animes.push(obj);
+        }
 
-      $rootScope.animes = animes;
-    });
+        $rootScope.animes = animes;
+      });
+    } else {
+      $http.get('/api/members/animes/' + $rootScope.currentUser.userId + '/' + title, {cache: true}).success(function (data) {
+        var animes = [];
+        for (var i = 0; i < data.length; i++) {
+          //オブジェクト作成
+          var obj = object(Anime, data[i]);
+          animes.push(obj);
+        }
+
+        $rootScope.animes = animes;
+      });
+    }
   };
 
   this.searchBySeason = function (year, season, callback) {
@@ -75,17 +88,31 @@ angular.module('animeLineupApp').service('AnimeSearchService', function ($http, 
     }
 
     //すべてのアニメからシーズンで検索
-    $http.get('/api/animes/' + year + '/' + season, {cache: true}).success(function (data) {
-      var animes = [];
-      for (var i = 0; i < data.length; i++) {
-        //オブジェクト作成
-        var obj = object(Anime, data[i]);
-        animes.push(obj);
-      }
+    if (!$rootScope.currentUser) {
+      $http.get('/api/animes/' + year + '/' + season, {cache: true}).success(function (data) {
+        var animes = [];
+        for (var i = 0; i < data.length; i++) {
+          //オブジェクト作成
+          var obj = object(Anime, data[i]);
+          animes.push(obj);
+        }
 
-      $rootScope.animes = animes;
-      callback();
-    });
+        $rootScope.animes = animes;
+        callback();
+      });
+    } else {
+      $http.get('/api/members/animes/' + $rootScope.currentUser.userId + '/' + year + '/' + season, {cache: true}).success(function (data) {
+        var animes = [];
+        for (var i = 0; i < data.length; i++) {
+          //オブジェクト作成
+          var obj = object(Anime, data[i]);
+          animes.push(obj);
+        }
+
+        $rootScope.animes = animes;
+        callback();
+      });
+    }
   };
 
   this.searchByDefault = function (callback) {
