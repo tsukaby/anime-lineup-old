@@ -15,11 +15,15 @@
 <hr>
 <article class="container-fluid">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 btn-group pull-right">
-      <button class="btn btn-default btn-sm dropdown-toggle sort-button pull-right" type="button"
-        data-toggle="dropdown">
-        Sort<span class="caret"></span>
-      </button>
+    <div class="col-xs-6" ng-show="animes">
+      <span>合計<span class="badge">{{animes.length}}</span></span>
+      <span ng-show="currentUser">切った<span class="badge">{{(animes | filter:{status:0}).length}}</span></span>
+      <span ng-show="currentUser">保留<span class="badge">{{(animes | filter:{status:1}).length}}</span></span>
+      <span ng-show="currentUser">見てる<span class="badge">{{(animes | filter:{status:2}).length}}</span></span>
+    </div>
+    <div class="col-xs-6 btn-group pull-right">
+      <button class="btn btn-default btn-sm dropdown-toggle sort-button pull-right" type="button" data-toggle="dropdown">
+        Sort<span class="caret"></span></button>
       <ul class="dropdown-menu">
         <li><a href="" ng-click="sortTitle()">Title</a></li>
         <li ng-show="currentUser"><a href="" ng-click="sortViewingHistories()">Viewing</a></li>
