@@ -3,6 +3,9 @@
 var should = require('should');
 var app = require('../../../server');
 var request = require('supertest');
+var passportStub = require('passport-stub');
+passportStub.install(app);
+var req = request(app);
 
 describe('GET /api/animes/:title タイトルによる検索', function () {
 
@@ -98,3 +101,66 @@ describe('GET /api/animes/:year/:season シーズンによる検索', function (
   });
 
 });
+
+describe('GET /api/members/animes/:userId/:title 会員用のタイトルによる検索', function () {
+
+  it('未認証の場合302で転送されること', function (done) {
+    passportStub.logout();
+    req.get('/api/members/animes/test001/title')
+      .expect(302)
+      .expect('Location', '/')
+      .end(function (err, res) {
+        if (err) {
+          return done(err);
+        }
+        done();
+      });
+  });
+
+  it('JSON配列が取得できること', function (done) {
+    passportStub.login({username: 'test001'});
+    req.get('/api/members/animes/test001/title')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end(function (err, res) {
+        if (err) {
+          return done(err);
+        }
+        res.body.should.be.instanceof(Array);
+        done();
+      });
+  });
+
+});
+
+describe('GET /api/members/animes/:userId/:year/:season 会員用のシーズンによる検索', function () {
+
+  it('未認証の場合302で転送されること', function (done) {
+    passportStub.logout();
+    req.get('/api/members/animes/test001/2010/winter')
+      .expect(302)
+      .expect('Location', '/')
+      .end(function (err, res) {
+        if (err) {
+          return done(err);
+        }
+        done();
+      });
+  });
+
+
+  it('JSON配列が取得できること', function (done) {
+    passportStub.login({username: 'test001'});
+    req.get('/api/members/animes/test001/2010/winter')
+      .expect(200)
+      .expect('Content-Type', /json/)
+      .end(function (err, res) {
+        if (err) {
+          return done(err);
+        }
+        res.body.should.be.instanceof(Array);
+        done();
+      });
+  });
+});
+

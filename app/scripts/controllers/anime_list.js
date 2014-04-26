@@ -85,20 +85,4 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
     });
   };
 
-  if ($scope.currentUser) {
-    // ログイン済みの場合のみ処理
-    $http.get('/api/viewing_histories/' + $scope.currentUser.userId + '/' + $rootScope.season.year + '/' + $rootScope.season.season).success(function (data) {
-      for (var i = 0; i < $rootScope.animes.length; i++) {
-        $rootScope.animes[i].status = 1;
-        for (var j = 0; j < data.length; j++) {
-          if (data[j].title === $rootScope.animes[i].title) {
-            $rootScope.animes[i].status = data[j].status;
-            break;
-          }
-        }
-      }
-    });
-
-  }
-
 });

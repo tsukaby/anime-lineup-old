@@ -8,26 +8,20 @@ describe('Service: AnimeSearchService', function () {
   // instantiate service
   var $httpBackend;
   var AnimeSearchService;
+  var rootScope;
+  var getData = [
+    {
+      title: 'anime1',
+      url: 'http://example.com/anime1',
+      thumbnailDelay: 0,
+      season: 'spring',
+      year: 2014
+    }
+  ];
 
-  beforeEach(inject(function (_$httpBackend_, _AnimeSearchService_) {
+  beforeEach(inject(function (_$httpBackend_, _AnimeSearchService_, $rootScope) {
+    rootScope = $rootScope;
     $httpBackend = _$httpBackend_;
-    $httpBackend.expectGET('api/animes/2014/spring').respond([
-      {
-        title: 'anime1',
-        url: 'http://example.com/anime1',
-        thumbnailDelay: 0,
-        season: 'spring',
-        year: 2014
-      }
-    ]);
-    $httpBackend.expectGET('api/seasons').respond([
-      {
-        year: '2014',
-        season: 'spring',
-        name: '2014年 春',
-        link: '#/2014/spring/'
-      }
-    ]);
     AnimeSearchService = _AnimeSearchService_;
   }));
 
@@ -36,15 +30,34 @@ describe('Service: AnimeSearchService', function () {
   });
 
   it('タイトルによる検索ができること', function () {
-    //TODO httpによる検索のテスト
+    $httpBackend.expectGET('/api/animes/anime1').respond(getData);
+
+    expect(rootScope.animes).toBeUndefined();
+    AnimeSearchService.searchByTitle('anime1');
+    $httpBackend.flush();
+    expect(rootScope.animes[0].title).toEqual(getData[0].title);
   });
 
   it('年と期による検索ができること', function () {
-    //TODO httpによる検索のテスト
+    $httpBackend.expectGET('/api/animes/2010/winter').respond(getData);
+
+    expect(rootScope.animes).toBeUndefined();
+    AnimeSearchService.searchBySeason(2010, 'winter', function () {
+    });
+    $httpBackend.flush();
+    expect(rootScope.animes[0].title).toEqual(getData[0].title);
   });
 
   it('デフォルト検索ができること', function () {
-    //TODO httpによる検索のテスト
+    rootScope.season.year = 2010;
+    rootScope.season.season = 'winter';
+    $httpBackend.expectGET('/api/animes/2010/winter').respond(getData);
+
+    expect(rootScope.animes).toBeUndefined();
+    AnimeSearchService.searchBySeason(2010, 'winter', function () {
+    });
+    $httpBackend.flush();
+    expect(rootScope.animes[0].title).toEqual(getData[0].title);
   });
 
 });
