@@ -31,19 +31,19 @@ var Anime = {
     return this.url;
   },
   getThumbnailURL: function () {
-    return 'http://capture.heartrails.com/400x400/delay=' + this.thumbnailDelay + '?' + this.url;
+    return '//capture.heartrails.com/400x400/delay=' + this.thumbnailDelay + '?' + this.url;
   },
   getThumbnailURL2: function (sizeX, sizeY) {
-    return 'http://capture.heartrails.com/' + sizeX + 'x' + sizeY + '/delay=' + this.thumbnailDelay + '?' + this.url;
+    return '//capture.heartrails.com/' + sizeX + 'x' + sizeY + '/delay=' + this.thumbnailDelay + '?' + this.url;
   },
   getEncodedURL: function () {
     return encodeURIComponent(this.url);
   },
   getHatebuURL: function () {
-    return 'http://b.hatena.ne.jp/entry/' + this.url;
+    return '//b.hatena.ne.jp/entry/' + this.url;
   },
   getFacebookButtonURL: function () {
-    return 'http://www.facebook.com/plugins/like.php?href=' + this.getURL() + '&width&layout=box_count&action=like&show_faces=false&share=false&height=65&appId=215921371931439';
+    return '//www.facebook.com/plugins/like.php?href=' + this.getURL() + '&width&layout=box_count&action=like&show_faces=false&share=false&height=65&appId=215921371931439';
   },
   getWikipediaURL: function () {
     return 'http://ja.wikipedia.org/wiki/' + this.getTitle();
