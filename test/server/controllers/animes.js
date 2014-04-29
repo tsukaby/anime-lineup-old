@@ -7,6 +7,23 @@ var passportStub = require('passport-stub');
 passportStub.install(app);
 var req = request(app);
 
+describe('GET /api/img/animes/:size/:delay サムネイル取得', function () {
+
+  it('画像が取得できること', function (done) {
+    request(app)
+      .get('/api/img/animes/400x400/3?url=http://google.co.jp/')
+      .expect(200)
+      .expect('Content-Type', /image/)
+      .end(function (err, res) {
+        if (err) {
+          return done(err);
+        }
+        done();
+      });
+  });
+
+});
+
 describe('GET /api/animes/:title タイトルによる検索', function () {
 
   it('JSON配列が取得できること', function (done) {

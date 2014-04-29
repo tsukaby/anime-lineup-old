@@ -10,7 +10,8 @@ angular.module('animeLineupApp', [
 ]).config(function ($routeProvider, $locationProvider, $httpProvider, $sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist([
     'self',
-    'http://www.facebook.com/**'
+    'http://www.facebook.com/**',
+    'https://www.facebook.com/**'
   ]);
 
   $routeProvider.when('/', {
