@@ -9,6 +9,11 @@ angular.module('animeLineupApp').controller('RegisterAnimeCtrl', function ($scop
     ];
   }
 
+  /**
+   * メッセージを消す。
+   *
+   * @param index
+   */
   $scope.closeAlert = function (index) {
     $scope.alerts.splice(index, 1);
   };

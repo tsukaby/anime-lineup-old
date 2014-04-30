@@ -32,17 +32,25 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
   $scope.previousSeason = '/' + previous.year + '/' + previous.season;
   $scope.nextSeason = '/' + next.year + '/' + next.season;
 
+  /**
+   * アニメリストをタイトルに従ってソートする。
+   */
   $scope.sortTitle = function () {
     var desc = !!$scope.desc;
     $rootScope.animes = $filter('orderBy')($rootScope.animes, 'title', desc);
     $scope.desc = !desc;
   };
 
+  /**
+   * アニメリストを視聴状況に従ってソートする。
+   */
   $scope.sortViewingHistories = function () {
     $rootScope.animes = $filter('viewingSortFilter')($rootScope.animes);
   };
 
-  // 画面先頭にスクロールする
+  /**
+   * スムーズに画面先頭へスクロールする。
+   */
   $scope.resetScroll = function () {
     var x = 0;
     var y = 600;
@@ -58,6 +66,11 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
     scroller.scrollToElement(document.getElementById('index_body'), offset, duration);
   };
 
+  /**
+   * 引数で指定したアニメの詳細画面を開く。
+   *
+   * @param anime 詳細を表示するアニメ
+   */
   $scope.open = function (anime) {
 
     var modalInstance = $modal.open({
@@ -75,6 +88,12 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
     });
   };
 
+  /**
+   * 視聴状況を登録する。
+   *
+   * @param anime 視聴状況を登録するアニメ
+   * @param mode 視聴状況
+   */
   $scope.view = function (anime, mode) {
     //パネルのスタイル変更
     anime.status = mode;

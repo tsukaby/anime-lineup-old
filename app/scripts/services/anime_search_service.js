@@ -19,7 +19,11 @@ function object(o) {
 object.F = function () {
 };
 
-//Animeクラス
+/**
+ * Animeクラス
+ *
+ * @type {{title: string, url: string, thumbnailDelay: number, getTitle: getTitle, getURL: getURL, getThumbnailURL: getThumbnailURL, getThumbnailURL2: getThumbnailURL2, getEncodedURL: getEncodedURL, getHatebuURL: getHatebuURL, getFacebookButtonURL: getFacebookButtonURL, getWikipediaURL: getWikipediaURL}}
+ */
 var Anime = {
   title: 'title',
   url: 'http://',
@@ -51,6 +55,12 @@ var Anime = {
 };
 
 angular.module('animeLineupApp').service('AnimeSearchService', function ($http, $rootScope) {
+
+  /**
+   * タイトルによるアニメ検索。
+   *
+   * @param {string} [title] 検索するアニメのタイトル
+   */
   this.searchByTitle = function (title) {
     if (!title) {
       return;
@@ -82,6 +92,13 @@ angular.module('animeLineupApp').service('AnimeSearchService', function ($http, 
     }
   };
 
+  /**
+   * シーズンによるアニメ検索。
+   *
+   * @param {number} year 検索するアニメの放送年
+   * @param {string} season 検索するアニメの季節
+   * @param {Function} callback 検索完了後のコールバック関数
+   */
   this.searchBySeason = function (year, season, callback) {
     if (!year || !season) {
       return;
@@ -115,6 +132,11 @@ angular.module('animeLineupApp').service('AnimeSearchService', function ($http, 
     }
   };
 
+  /**
+   * 特に条件を指定しないアニメ検索。現在の日時を基準としたシーズン検索を実行する。
+   *
+   * @param {Function} callback 検索完了後のコールバック関数
+   */
   this.searchByDefault = function (callback) {
     var year = $rootScope.season.year;
     var season = $rootScope.season.season;
