@@ -15,6 +15,8 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
+  grunt.loadNpmTasks('grunt-jsdoc');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -452,6 +454,15 @@ module.exports = function (grunt) {
       test: {
         NODE_ENV: 'test'
       }
+    },
+
+    jsdoc: {
+      dist: {
+        src: ['<%= yeoman.app %>/scripts/**/*.js', 'test/server/**/*.js'],
+        options: {
+          destination: 'doc'
+        }
+      }
     }
   });
 
@@ -554,5 +565,10 @@ module.exports = function (grunt) {
     'newer:jshint',
     'test',
     'build'
+  ]);
+
+  grunt.registerTask('doc', [
+    'newer:jshint',
+    'jsdoc'
   ]);
 };

@@ -1,7 +1,7 @@
 'use strict';
 
-//配列に格納されているオブジェクトのstatusフィールドに従ってソートする
-angular.module('animeLineupApp').filter('viewingSortFilter', function () {
+angular.module('animeLineupApp').filter('viewingSortFilter',
+  function () {
   return function (input) {
 
     if (!input) {

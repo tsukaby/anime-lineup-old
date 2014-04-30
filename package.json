@@ -61,7 +61,9 @@
     "open": "~0.0.4",
     "grunt-rsync": "^0.4.0",
     "grunt-contrib-imagemin": "^0.6.1",
-    "passport-stub": "^0.2.1"
+    "passport-stub": "^0.2.1",
+    "jsdoc": "^3.3.0-alpha5",
+    "grunt-jsdoc": "^0.5.4"
   },
   "engines": {
     "node": ">=0.10.0"

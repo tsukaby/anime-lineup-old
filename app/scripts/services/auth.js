@@ -8,6 +8,12 @@ angular.module('animeLineupApp').factory('Auth', function ($location, $rootScope
 
   return {
 
+    /**
+     * ログアウトする。
+     *
+     * @param callback
+     * @returns {$promise|*|A.$promise}
+     */
     logout: function (callback) {
       var cb = callback || angular.noop;
 
@@ -20,6 +26,11 @@ angular.module('animeLineupApp').factory('Auth', function ($location, $rootScope
         }).$promise;
     },
 
+    /**
+     * ログイン状態を取得する。
+     *
+     * @returns {boolean} trueの場合、ログインしている
+     */
     isLoggedIn: function () {
       var user = $rootScope.currentUser;
       return !!user;

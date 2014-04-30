@@ -4,6 +4,9 @@ angular.module('animeLineupApp').controller('ModalInstanceCtrl', function ($scop
 
   $scope.anime = anime;
 
+  /**
+   * ダイアログ画面を閉じる。
+   */
   $scope.close = function () {
     $modalInstance.close();
   };
