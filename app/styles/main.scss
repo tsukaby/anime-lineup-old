@@ -79,6 +79,13 @@ ul {
 .navbar-blue {
   background-color: #0c3b81;
   color: white;
+
+  & .navbar-toggle {
+    border-color: #6c6b81;
+    & .icon-bar {
+      background-color: #FFFFFF;
+    }
+  }
 }
 
 #index_body footer .container {
