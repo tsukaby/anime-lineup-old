@@ -26,7 +26,7 @@ describe('POST /api/viewing_histories 視聴状態の保存取得', function () 
   });
 
   it('データが登録できること', function (done) {
-    var input = {userId: 'test001', year: 2010, season: 'winter', title: 'title_test001', status: 1};
+    var input = {userId: 'test001', animeId:1, status: 1};
     passportStub.login({username: 'test001'});
     req.post('/api/viewing_histories')
       .send(input)
@@ -46,7 +46,7 @@ describe('POST /api/viewing_histories 視聴状態の保存取得', function () 
   });
 
   it('同一データが重複して登録されないこと', function (done) {
-    var input = {userId: 'test001', year: 2010, season: 'winter', title: 'title_test001', status: 1};
+    var input = {userId: 'test001', animeId:1, status: 1};
     passportStub.login({username: 'test001'});
     req.post('/api/viewing_histories')
       .send(input)
@@ -76,7 +76,7 @@ describe('POST /api/viewing_histories 視聴状態の保存取得', function () 
   });
 
   it('データが更新されること', function (done) {
-    var input = {userId: 'test001', year: 2010, season: 'winter', title: 'title_test001', status: 1};
+    var input = {userId: 'test001', animeId:1, status: 1};
     passportStub.login({username: 'test001'});
     req.post('/api/viewing_histories')
       .send(input)
