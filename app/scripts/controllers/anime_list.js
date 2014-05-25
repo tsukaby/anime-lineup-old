@@ -99,7 +99,7 @@ angular.module('animeLineupApp').controller('AnimeListCtrl', function ($scope, $
     anime.status = mode;
 
     //視聴状況の変更
-    $http.post('/api/viewing_histories', {userId: $scope.currentUser.userId, year: anime.year, season: anime.season, title: anime.title, status: mode}).success(function (data) {
+    $http.post('/api/viewing_histories', {userId: $scope.currentUser.userId, animeId: anime.animeId, status: mode}).success(function (data) {
       console.log(data);
     });
   };
