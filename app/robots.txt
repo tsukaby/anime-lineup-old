@@ -1,3 +1,5 @@
 # robotstxt.org
 
 User-agent: *
+Disallow: /api
+Sitemap: http://anime-lineup.tsukaby.com/sitemap.xml

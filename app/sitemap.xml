@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<url>
+  <loc>http://anime-lineup.tsukaby.com/</loc>
+  <priority>1.0</priority>
+</url>
+<url>
+  <loc>http://anime-lineup.tsukaby.com/2014/spring</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>http://anime-lineup.tsukaby.com/2014/winter</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>http://anime-lineup.tsukaby.com/2013/autumn</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>http://anime-lineup.tsukaby.com/2013/summer</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>http://anime-lineup.tsukaby.com/2013/spring</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>http://anime-lineup.tsukaby.com/2013/winter</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>http://anime-lineup.tsukaby.com/2012/autumn</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>http://anime-lineup.tsukaby.com/2012/summer</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>http://anime-lineup.tsukaby.com/2012/spring</loc>
+  <priority>0.6</priority>
+</url>
+<url>
+  <loc>http://anime-lineup.tsukaby.com/2012/winter</loc>
+  <priority>0.6</priority>
+</url>
+
+</urlset>
