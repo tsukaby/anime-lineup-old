@@ -1,5 +1,6 @@
 anime-lineup
 ============
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/tsukaby/anime-lineup?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 日本のアニメのラインナップを紹介するWebアプリケーションです。
 各シーズンごとのアニメの一覧をサムネイル付きで見ることができます。
