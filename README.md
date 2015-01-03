@@ -1,6 +1,9 @@
 anime-lineup
 ============
 
+develop : [![Build Status](https://travis-ci.org/tsukaby/anime-lineup.svg?branch=develop)](https://travis-ci.org/tsukaby/anime-lineup)
+master  : [![Build Status](https://travis-ci.org/tsukaby/anime-lineup.svg?branch=master)](https://travis-ci.org/tsukaby/anime-lineup)
+
 日本のアニメのラインナップを紹介するWebアプリケーションです。
 各シーズンごとのアニメの一覧をサムネイル付きで見ることができます。
 また、アニメタイトルでの検索が可能です。
