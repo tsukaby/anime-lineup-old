@@ -21,7 +21,6 @@ module.exports = function(config) {
       'app/bower_components/angular-scroll/angular-scroll.js',
       'app/scripts/*.js',
       'app/scripts/**/*.js',
-      'test/client/mock/**/*.js',
       'test/client/spec/**/*.js'
     ],
 
@@ -51,6 +50,7 @@ module.exports = function(config) {
     browsers: process.env.TRAVIS ?
       ['ChromeTravis', 'Firefox', 'PhantomJS'] : ['Chrome', 'Firefox', 'PhantomJS'],
 
+
     customLaunchers: {
       ChromeTravis: {
         base: 'Chrome',
@@ -60,6 +60,25 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: false,
+
+    reporters: ['progress', 'coverage'],
+
+    preprocessors: {
+      "**/lib/*js": "coverage"
+    },
+
+    coverageReporter: {
+      type: "lcov",
+      dir: "coverage/"
+    },
+
+    plugins: [
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-phantomjs-launcher',
+      'karma-coverage'
+    ]
   });
 };

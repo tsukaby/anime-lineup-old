@@ -2,7 +2,10 @@ anime-lineup
 ============
 
 develop : [![Build Status](https://travis-ci.org/tsukaby/anime-lineup.svg?branch=develop)](https://travis-ci.org/tsukaby/anime-lineup)
+
 master  : [![Build Status](https://travis-ci.org/tsukaby/anime-lineup.svg?branch=master)](https://travis-ci.org/tsukaby/anime-lineup)
+
+climate : [![Code Climate](https://codeclimate.com/github/tsukaby/anime-lineup/badges/gpa.svg)](https://codeclimate.com/github/tsukaby/anime-lineup)
 
 日本のアニメのラインナップを紹介するWebアプリケーションです。
 各シーズンごとのアニメの一覧をサムネイル付きで見ることができます。
