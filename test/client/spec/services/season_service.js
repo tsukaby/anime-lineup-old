@@ -12,66 +12,6 @@ describe('Service: SeasonService', function () {
 
   }));
 
-  it('currentSeason関数で、現在のシーズンが取得できること', function () {
-    //1月の場合、冬シーズンと判断されること
-    spyOn(Date.prototype, 'getFullYear').andReturn(2010);
-    spyOn(Date.prototype, 'getMonth').andReturn(0);
-    expect(SeasonService.currentSeason()).toEqual({year: 2010, season: 'winter'});
-
-    //3月の場合、冬シーズンと判断されること
-    Date.prototype.getFullYear.isSpy = false;
-    Date.prototype.getMonth.isSpy = false;
-    spyOn(Date.prototype, 'getFullYear').andReturn(2010);
-    spyOn(Date.prototype, 'getMonth').andReturn(2);
-    expect(SeasonService.currentSeason()).toEqual({year: 2010, season: 'winter'});
-
-    //4月の場合、春シーズンと判断されること
-    Date.prototype.getFullYear.isSpy = false;
-    Date.prototype.getMonth.isSpy = false;
-    spyOn(Date.prototype, 'getFullYear').andReturn(2010);
-    spyOn(Date.prototype, 'getMonth').andReturn(3);
-    expect(SeasonService.currentSeason()).toEqual({year: 2010, season: 'spring'});
-
-    //6月の場合、春シーズンと判断されること
-    Date.prototype.getFullYear.isSpy = false;
-    Date.prototype.getMonth.isSpy = false;
-    spyOn(Date.prototype, 'getFullYear').andReturn(2010);
-    spyOn(Date.prototype, 'getMonth').andReturn(5);
-    expect(SeasonService.currentSeason()).toEqual({year: 2010, season: 'spring'});
-
-    //7月の場合、夏シーズンと判断されること
-    Date.prototype.getFullYear.isSpy = false;
-    Date.prototype.getMonth.isSpy = false;
-    spyOn(Date.prototype, 'getFullYear').andReturn(2010);
-    spyOn(Date.prototype, 'getMonth').andReturn(6);
-    expect(SeasonService.currentSeason()).toEqual({year: 2010, season: 'summer'});
-
-    //9月の場合、夏シーズンと判断されること
-    Date.prototype.getFullYear.isSpy = false;
-    Date.prototype.getMonth.isSpy = false;
-    spyOn(Date.prototype, 'getFullYear').andReturn(2010);
-    spyOn(Date.prototype, 'getMonth').andReturn(8);
-    expect(SeasonService.currentSeason()).toEqual({year: 2010, season: 'summer'});
-
-    //10月の場合、秋シーズンと判断されること
-    Date.prototype.getFullYear.isSpy = false;
-    Date.prototype.getMonth.isSpy = false;
-    spyOn(Date.prototype, 'getFullYear').andReturn(2010);
-    spyOn(Date.prototype, 'getMonth').andReturn(9);
-    expect(SeasonService.currentSeason()).toEqual({year: 2010, season: 'autumn'});
-
-    //12月の場合、秋シーズンと判断されること
-    Date.prototype.getFullYear.isSpy = false;
-    Date.prototype.getMonth.isSpy = false;
-    spyOn(Date.prototype, 'getFullYear').andReturn(2010);
-    spyOn(Date.prototype, 'getMonth').andReturn(11);
-    expect(SeasonService.currentSeason()).toEqual({year: 2010, season: 'autumn'});
-
-    Date.prototype.getFullYear.isSpy = false;
-    Date.prototype.getMonth.isSpy = false;
-
-  });
-
   it('nextSeason関数に各期を与えた場合、各期の次のシーズンが返ること', function () {
     expect(SeasonService.nextSeason(2010, 'winter')).toEqual({year: 2010, season: 'spring'});
     expect(SeasonService.nextSeason(2010, 'spring')).toEqual({year: 2010, season: 'summer'});

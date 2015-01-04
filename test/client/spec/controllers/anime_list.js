@@ -18,14 +18,10 @@ describe('Controller: AnimeListCtrl', function () {
     });
   }));
 
-  it('NavigationServiceが定義されていること', function () {
-    expect(scope.NavigationService).toBeDefined();
-  });
-
   beforeEach(inject(function ($controller, $rootScope, SeasonService) {
     scope = $rootScope.$new();
 
-    spyOn(SeasonService, 'currentSeason').andReturn({year: 2010, season: 'winter'});
+    spyOn(SeasonService, 'currentSeason').and.callFake({year: 2010, season: 'winter'});
 
     AnimeListCtrl = $controller('AnimeListCtrl', {
       $scope: scope,
@@ -33,8 +29,4 @@ describe('Controller: AnimeListCtrl', function () {
     });
   }));
 
-  it('前・次ページのリンクが設定されていること', function () {
-    expect(scope.previousSeason).toBe('/2009/autumn');
-    expect(scope.nextSeason).toBe('/2010/spring');
-  });
 });
